@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>cre</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<div style="
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    cursor: pointer;
+"><a href="#table">返回顶部</a></div>
+<h2 id="table">目录</h2>
+<ol>
+<li>
+<a href="#1_1">用户管理</a>
+<ol>
+<li><a href="#1_1">用户查询</a></li>
+<li><a href="#1_2">获取组织结构</a>  
+</li>
+<li><a href="#1_3">获取人员权限信息</a></li>
+<li><a href="#1_4">根据id获取用户</a></li>
+<li><a href="#1_5">用户查询-new</a></li>
+<li><a href="#1_6">获取组织结构-new</a></li>
+<li><a href="#1_7">获取人员权限信息-new</a></li>
+</ol>
+</li>
+<li>
+<a href="#2_1">选题目录</a>
+<ol>
+<li><a href="#2_1">新增选题目录</a></li>
+<li><a href="#2_2">修改选题目录</a></li>
+<li><a href="#2_3">删除选题目录</a></li>
+<li><a href="#2_4">检索选题资源</a></li>
+<li><a href="#2_5">选题目录资源新增/另存为</a></li>
+</ol>
+</li>
+<li>
+<a href="#3_1">富文本稿件</a>
+<ol>
+<li><a href="#3_1">获取文件存储路径及流媒体路径</a></li>
+<li><a href="#3_2">创建资源文件</a></li>
+<li><a href="#3_3">获取稿件最新版本详细信息</a></li>
+<li><a href="#3_4">获取稿件所有版本详细信息</a></li>
+<li><a href="#3_5">保存稿件</a></li>
+<li><a href="#3_6">删除文件</a></li>
+<li><a href="#3_7">获取附件列表</a></li>
+</ol>
+</li>
+<li>
+<a href="#4_1">逻辑目录</a>
+<ol>
+<li><a href="#4_1">获取逻辑目录</a>   
+</li>
+</ol>
+</li>
+<li>
+<a href="#5_1">资源轨迹</a>
+<ol>
+<li><a href="#5_1">获取资源操作信息</a></li>
+</ol>
+</li>
+</ol>
+<h3 id="1_1">1.1用户查询</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/authorization/users</code></p>
+<p><code>http://server:port/cre/api/authorization/users?userName=张三&amp;privilegeIDs=123&amp;privilegeIDs=456&amp;privilegeIDs=789</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userName</td>
+	<td>string</td>
+	<td>用户名（支持模糊查询）</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>privilegeIDs</td>
+	<td>string</td>
+	<td>权限id列表(url传参示例：privilegeIDs=123&amp;privilegeIDs=456&amp;privilegeIDs=789)</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>privilegeDepID</td>
+	<td>string</td>
+	<td>权限关联部门id，同privilegeID联合使用</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+  &quot;totalCount&quot;: 2,                             //总数
+  &quot;userList&quot;: [
+        {
+            &quot;id&quot;: &quot;zhangsan&quot;,                   //用户ID，最长不超过36个字符
+            &quot;name&quot;: &quot;张三&quot;,                       //用户名
+            &quot;workNo&quot;: &quot;&quot;,                               //工号
+            &quot;organizationId&quot;: &quot;23voeruqtp398ih98&quot;,       //用户所属组织结构ID
+            &quot;organizationName&quot;: &quot;设计部&quot;,              //用户所属组织结构名称
+            &quot;description&quot;: &quot;&quot;,                          //描述，最长不超过256个字符
+            &quot;status&quot;: 0,                                //状态，0: 正常, 1: 挂起, 默认值为0
+            &quot;tel&quot;: &quot;13912345678&quot;,                       //电话
+            &quot;mail&quot;: &quot;zhangsan@abc.com&quot;,                 //邮箱
+            &quot;type&quot;: 0,                                  //状态，0: 本地用户, 1：统一认证用户, 默认值为0
+            &quot;personalSpaceFlag&quot;: 0,                     //开启个人空间标识, 0: 不开启, 1: 开启, 默认值为0
+            &quot;maxCapacity&quot;: 0,                           //个人用户最大可用空间，单位字节
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/zhangsan.jpg&quot;    //用户肖像地址
+        },
+        {
+            &quot;id&quot;: &quot;lisi&quot;,
+            &quot;name&quot;: &quot;李四&quot;,
+            &quot;workNo&quot;: &quot;&quot;,
+            &quot;organizationId&quot;: &quot;aofsd8uvnau87yr9ah&quot;,           
+            &quot;organizationName&quot;: &quot;开发部&quot;,            
+            &quot;description&quot;: &quot;&quot;,
+            &quot;status&quot;: 0,
+            &quot;tel&quot;: &quot;13912345678&quot;,
+            &quot;mail&quot;: &quot;lisi@abc.com&quot;,
+            &quot;type&quot;: 0,
+            &quot;personalSpaceFlag&quot;: 0,
+            &quot;maxCapacity&quot;: 0,
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/lisi.jpg&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_2">1.2获取组织结构</h3>
+<h3>request</h3>
+<p><code>POST http://server:port/cre/api/authorization/organization/load</code></p>
+<pre><code>{    
+    &quot;organizationIdList&quot;: [
+        &quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;
+    ]
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>organizationIdList</td>
+	<td>list</td>
+	<td>组织结点ID数组，如果数组元素个为0，则表示获取全部组织结点</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<pre><code>{
+    &quot;commonResponse&quot;: {
+        &quot;success&quot;: true,                //是否成功，true表示成功，false表示失败
+        &quot;description&quot;: &quot;&quot;                   //描述，通常只有失败的时候，才有原因描述
+    },
+    &quot;totalCount&quot;: 1,                        //返回的组织结点个数
+    &quot;organizationList&quot;: [
+        {
+            &quot;id&quot;: &quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;,   //组织结点ID，最长不超过36个字符
+            &quot;name&quot;: &quot;本单位&quot;,                  //组织结点名称
+            &quot;parentId&quot;: &quot;-&quot;,                    //父节点ID，最长不超过64个字符
+            &quot;level&quot;: 0,                     //当前层级，-1是所有结点的根，不可见。其余结点，从0, 1, 2逐级增大
+            &quot;parentLevel&quot;: -1,              //父节点的层级
+            &quot;orderNo&quot;: 0                    //本结点在本层级兄弟结点中的顺序，从0开始，数字越小，排在越前面
+        }   
+    ]
+}
+</code></pre>
+
+<h3 id="1_3">1.3获取人员权限信息</h3>
+<h3>request</h3>
+<p><code>[POST]http://server:port/cre/api/authorization/privilege/load</code></p>
+<pre><code>{
+    &quot;userId&quot;: &quot;zhangsan&quot;,
+    &quot;privilegePrefix&quot;: &quot;PID_DISTRIBUTE&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>用户ID，不填，或者为空，表示获取全部权限；如果有值，则获取该用户拥有的权限</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>privilegePrefix</td>
+	<td>权限前缀，用于过滤。若不填，则为空，不过滤</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<pre><code>{
+    &quot;commonResponse&quot;: {
+        &quot;success&quot;: true,
+        &quot;description&quot;: &quot;&quot;
+    },
+    &quot;totalCount&quot;: 3,                //返回的权限信息个数
+    &quot;privilegeList&quot;: [
+        {
+            &quot;id&quot;: &quot;PID_DISTRIBUTE_ADMIN&quot;,           //权限ID，最长不超过36个字符
+            &quot;name&quot;: &quot;分发管理员权限&quot;,                  //权限名
+            &quot;groupId&quot;: &quot;&quot;,                          //  所属权限组ID
+            &quot;description&quot;: &quot;分发管理管理员&quot;            //描述，最长不超过256个字符
+            &quot;departmentIdList&quot;: [&quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;, &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;]        //如果是部门关联权限，适用的部门id列表
+            &quot;departmentList&quot;: [{
+              &quot;id&quot;: &quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;,       //组织结点ID，最长不超过36个字符
+              &quot;name&quot;: &quot;本单位1&quot;,                   //组织结点名称
+              &quot;parentId&quot;: &quot;-&quot;,                    //父节点ID，最长不超过64个字符
+              &quot;level&quot;: 0,                         //当前层级，-1是所有结点的根，不可见。其余结点，从0, 1, 2逐级增大
+              &quot;parentLevel&quot;: -1,                  //父节点的层级
+              &quot;orderNo&quot;: 0                        //本结点在本层级兄弟结点中的顺序，从0开始，数字越小，排在越前面
+            },{
+              &quot;id&quot;: &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;,       
+              &quot;name&quot;: &quot;本单位2&quot;,                   
+              &quot;parentId&quot;: &quot;-&quot;,                    
+              &quot;level&quot;: 0,                         
+              &quot;parentLevel&quot;: -1,              
+              &quot;orderNo&quot;: 0                        
+            }]
+        },
+        {
+            &quot;id&quot;: &quot;PID_DISTRIBUTE_TASK_AUDIT&quot;,
+            &quot;name&quot;: &quot;分发审核权限&quot;,
+            &quot;groupId&quot;: &quot;&quot;,
+            &quot;description&quot;: &quot;分发审核权限&quot;,
+            &quot;departmentIdList&quot;: [&quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;, &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;],
+            &quot;departmentList&quot;: [{
+              &quot;id&quot;: &quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;,       //组织结点ID，最长不超过36个字符
+              &quot;name&quot;: &quot;本单位1&quot;,                   //组织结点名称
+              &quot;parentId&quot;: &quot;-&quot;,                    //父节点ID，最长不超过64个字符
+              &quot;level&quot;: 0,                         //当前层级，-1是所有结点的根，不可见。其余结点，从0, 1, 2逐级增大
+              &quot;parentLevel&quot;: -1,                  //父节点的层级
+              &quot;orderNo&quot;: 0                        //本结点在本层级兄弟结点中的顺序，从0开始，数字越小，排在越前面
+            },{
+              &quot;id&quot;: &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;,       
+              &quot;name&quot;: &quot;本单位2&quot;,                   
+              &quot;parentId&quot;: &quot;-&quot;,                    
+              &quot;level&quot;: 0,                         
+              &quot;parentLevel&quot;: -1,              
+              &quot;orderNo&quot;: 0                        
+            }]
+        },
+        {
+            &quot;id&quot;: &quot;PID_DISTRIBUTE_TASK_MANAGEMENT&quot;,
+            &quot;name&quot;: &quot;分发权限&quot;,
+            &quot;groupId&quot;: &quot;&quot;,
+            &quot;description&quot;: &quot;分发权限&quot;,
+            &quot;departmentIdList&quot;: [&quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;, &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;],
+            &quot;departmentList&quot;: [{
+              &quot;id&quot;: &quot;7A1180CC-0C29-4B37-82B3-83E525F559AC&quot;,       //组织结点ID，最长不超过36个字符
+              &quot;name&quot;: &quot;本单位1&quot;,                   //组织结点名称
+              &quot;parentId&quot;: &quot;-&quot;,                    //父节点ID，最长不超过64个字符
+              &quot;level&quot;: 0,                         //当前层级，-1是所有结点的根，不可见。其余结点，从0, 1, 2逐级增大
+              &quot;parentLevel&quot;: -1,                  //父节点的层级
+              &quot;orderNo&quot;: 0                        //本结点在本层级兄弟结点中的顺序，从0开始，数字越小，排在越前面
+            },{
+              &quot;id&quot;: &quot;7A1190CC-0C29-4B37-85B3-83E525F559AC&quot;,       
+              &quot;name&quot;: &quot;本单位2&quot;,                   
+              &quot;parentId&quot;: &quot;-&quot;,                    
+              &quot;level&quot;: 0,                         
+              &quot;parentLevel&quot;: -1,              
+              &quot;orderNo&quot;: 0                        
+            }]      
+        }
+    ]
+}
+</code></pre>
+
+<h3 id="1_4">1.4根据id查询用户</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/authorization/findUsersById</code></p>
+<p><code>http://server:port/cre/api/authorization/findUsersById?userIds=zhangsan&amp;userIds=lisi&amp;departmentIds=adb6df15e3c7481aaaf29997a3f3125f</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userIds</td>
+	<td>string</td>
+	<td>用户id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>departmentIds</td>
+	<td>string</td>
+	<td>部门id</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+  &quot;totalCount&quot;: 2,                             //总数
+  &quot;userList&quot;: [
+        {
+            &quot;id&quot;: &quot;zhangsan&quot;,                   //用户ID，最长不超过36个字符
+            &quot;name&quot;: &quot;张三&quot;,                       //用户名
+            &quot;workNo&quot;: &quot;&quot;,                               //工号
+            &quot;organizationId&quot;: &quot;23voeruqtp398ih98&quot;,       //用户所属组织结构ID
+            &quot;organizationName&quot;: &quot;设计部&quot;,              //用户所属组织结构名称
+            &quot;description&quot;: &quot;&quot;,                          //描述，最长不超过256个字符
+            &quot;status&quot;: 0,                                //状态，0: 正常, 1: 挂起, 默认值为0
+            &quot;tel&quot;: &quot;13912345678&quot;,                       //电话
+            &quot;mail&quot;: &quot;zhangsan@abc.com&quot;,                 //邮箱
+            &quot;type&quot;: 0,                                  //状态，0: 本地用户, 1：统一认证用户, 默认值为0
+            &quot;personalSpaceFlag&quot;: 0,                     //开启个人空间标识, 0: 不开启, 1: 开启, 默认值为0
+            &quot;maxCapacity&quot;: 0,                           //个人用户最大可用空间，单位字节
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/zhangsan.jpg&quot;    //用户肖像地址
+        },
+        {
+            &quot;id&quot;: &quot;lisi&quot;,
+            &quot;name&quot;: &quot;李四&quot;,
+            &quot;workNo&quot;: &quot;&quot;,
+            &quot;organizationId&quot;: &quot;aofsd8uvnau87yr9ah&quot;,           
+            &quot;organizationName&quot;: &quot;开发部&quot;,            
+            &quot;description&quot;: &quot;&quot;,
+            &quot;status&quot;: 0,
+            &quot;tel&quot;: &quot;13912345678&quot;,
+            &quot;mail&quot;: &quot;lisi@abc.com&quot;,
+            &quot;type&quot;: 0,
+            &quot;personalSpaceFlag&quot;: 0,
+            &quot;maxCapacity&quot;: 0,
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/lisi.jpg&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_4">1.4根据id查询用户</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/authorization/findUsersById</code></p>
+<p><code>http://server:port/cre/api/authorization/findUsersById?userIds=zhangsan&amp;userIds=lisi</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userIds</td>
+	<td>string</td>
+	<td>用户id</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+  &quot;totalCount&quot;: 2,                             //总数
+  &quot;userList&quot;: [
+        {
+            &quot;id&quot;: &quot;zhangsan&quot;,                   //用户ID，最长不超过36个字符
+            &quot;name&quot;: &quot;张三&quot;,                       //用户名
+            &quot;workNo&quot;: &quot;&quot;,                               //工号
+            &quot;organizationId&quot;: &quot;23voeruqtp398ih98&quot;,       //用户所属组织结构ID
+            &quot;organizationName&quot;: &quot;设计部&quot;,              //用户所属组织结构名称
+            &quot;description&quot;: &quot;&quot;,                          //描述，最长不超过256个字符
+            &quot;status&quot;: 0,                                //状态，0: 正常, 1: 挂起, 默认值为0
+            &quot;tel&quot;: &quot;13912345678&quot;,                       //电话
+            &quot;mail&quot;: &quot;zhangsan@abc.com&quot;,                 //邮箱
+            &quot;type&quot;: 0,                                  //状态，0: 本地用户, 1：统一认证用户, 默认值为0
+            &quot;personalSpaceFlag&quot;: 0,                     //开启个人空间标识, 0: 不开启, 1: 开启, 默认值为0
+            &quot;maxCapacity&quot;: 0,                           //个人用户最大可用空间，单位字节
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/zhangsan.jpg&quot;    //用户肖像地址
+        },
+        {
+            &quot;id&quot;: &quot;lisi&quot;,
+            &quot;name&quot;: &quot;李四&quot;,
+            &quot;workNo&quot;: &quot;&quot;,
+            &quot;organizationId&quot;: &quot;aofsd8uvnau87yr9ah&quot;,           
+            &quot;organizationName&quot;: &quot;开发部&quot;,            
+            &quot;description&quot;: &quot;&quot;,
+            &quot;status&quot;: 0,
+            &quot;tel&quot;: &quot;13912345678&quot;,
+            &quot;mail&quot;: &quot;lisi@abc.com&quot;,
+            &quot;type&quot;: 0,
+            &quot;personalSpaceFlag&quot;: 0,
+            &quot;maxCapacity&quot;: 0,
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/lisi.jpg&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_5">1.5用户查询-new</h3>
+<h3>request</h3>
+<p><code>[POST] http://server:port/cre/api/authorization/users/new</code></p>
+<pre><code>{
+  &quot;userName&quot;: &quot;黄&quot;,
+  &quot;privilegeInfos&quot;: [
+    {
+      &quot;privilegeId&quot;: &quot;PID_PRODUCT_STATUS_AUDIT&quot;,
+      &quot;status&quot;: &quot;待审核&quot;,
+      &quot;departmentId&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;
+    },
+    {
+      &quot;privilegeId&quot;: &quot;PID_PRODUCT_STATUS_AUDIT&quot;,
+      &quot;status&quot;: &quot;审核通过&quot;,
+      &quot;departmentId&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;
+    }
+  ]
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userName</td>
+	<td>string</td>
+	<td>用户名（支持模糊查询）</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>privilegeId</td>
+	<td>string</td>
+	<td>权限id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>departmentId</td>
+	<td>string</td>
+	<td>主分类id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>status</td>
+	<td>string</td>
+	<td>状态（待审核、审核通过、已驳回、已签发）</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<p>注：多个privilegeInfos会取交集</p>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+  &quot;totalCount&quot;: 2,                             //总数
+  &quot;userList&quot;: [
+        {
+            &quot;id&quot;: &quot;zhangsan&quot;,                   //用户ID，最长不超过36个字符
+            &quot;name&quot;: &quot;张三&quot;,                       //用户名
+            &quot;workNo&quot;: &quot;&quot;,                               //工号
+            &quot;organizationId&quot;: &quot;23voeruqtp398ih98&quot;,       //用户所属组织结构ID
+            &quot;organizationName&quot;: &quot;设计部&quot;,              //用户所属组织结构名称
+            &quot;description&quot;: &quot;&quot;,                          //描述，最长不超过256个字符
+            &quot;status&quot;: 0,                                //状态，0: 正常, 1: 挂起, 默认值为0
+            &quot;tel&quot;: &quot;13912345678&quot;,                       //电话
+            &quot;mail&quot;: &quot;zhangsan@abc.com&quot;,                 //邮箱
+            &quot;type&quot;: 0,                                  //状态，0: 本地用户, 1：统一认证用户, 默认值为0
+            &quot;personalSpaceFlag&quot;: 0,                     //开启个人空间标识, 0: 不开启, 1: 开启, 默认值为0
+            &quot;maxCapacity&quot;: 0,                           //个人用户最大可用空间，单位字节
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/zhangsan.jpg&quot;    //用户肖像地址
+        },
+        {
+            &quot;id&quot;: &quot;lisi&quot;,
+            &quot;name&quot;: &quot;李四&quot;,
+            &quot;workNo&quot;: &quot;&quot;,
+            &quot;organizationId&quot;: &quot;aofsd8uvnau87yr9ah&quot;,           
+            &quot;organizationName&quot;: &quot;开发部&quot;,            
+            &quot;description&quot;: &quot;&quot;,
+            &quot;status&quot;: 0,
+            &quot;tel&quot;: &quot;13912345678&quot;,
+            &quot;mail&quot;: &quot;lisi@abc.com&quot;,
+            &quot;type&quot;: 0,
+            &quot;personalSpaceFlag&quot;: 0,
+            &quot;maxCapacity&quot;: 0,
+            &quot;iconUrl&quot;: &quot;http://127.0.0.1:8080/user/lisi.jpg&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_6">1.6获取组织机构-new</h3>
+<h3>request</h3>
+<p><code>[POST] http://server:port/cre/api/authorization/organization/load/mainclass</code></p>
+<pre><code>{    
+    &quot;userId&quot;: &quot;e18a0f771ac4485fa9107d8382326e57&quot;,
+    &quot;privilegePrefix&quot;:&quot;PID_PRODUCT_FLODER_INCOMMINGDATA&quot;
+    
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>string</td>
+	<td>用户ID</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>privilegePrefix</td>
+	<td>string</td>
+	<td>权限前缀</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+    &quot;commonResponse&quot;: {
+        &quot;description&quot;: &quot;&quot;,
+        &quot;success&quot;: true
+    },
+    &quot;organizationList&quot;: [
+        {
+            &quot;id&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+            &quot;text&quot;: &quot;人民日报&quot;,
+            &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+        },
+        {
+            &quot;id&quot;: &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+            &quot;text&quot;: &quot;要闻一部子部&quot;,
+            &quot;parentId&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;
+        },
+        {
+            &quot;disabled&quot;: true,
+            &quot;id&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;,
+            &quot;text&quot;: &quot;部门树&quot;,
+            &quot;parentId&quot;: &quot;#&quot;
+        },
+        {
+            &quot;disabled&quot;: true,
+            &quot;id&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;,
+            &quot;text&quot;: &quot;要闻一部&quot;,
+            &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+        }
+    ],
+    &quot;totalCount&quot;: 4
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_7">1.7获取人员权限信息-new</h3>
+<h3>request</h3>
+<p><code>[POST] http://server:port/cre/api/authorization/privilege/load/mainclass</code></p>
+<pre><code>{
+    &quot;userId&quot;: &quot;e18a0f771ac4485fa9107d8382326e57&quot;,
+    &quot;privilegePrefix&quot;: &quot;PID_PRODUCT_STATUS_BROWSER&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>string</td>
+	<td>用户ID</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>privilegePrefix</td>
+	<td>string</td>
+	<td>权限前缀</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功：200</p>
+<pre><code>RequestBody
+{
+    &quot;privilegeList&quot;: [
+        {
+            &quot;id&quot;: &quot;PID_PRODUCT_STATUS_BROWSER&quot;,
+            &quot;name&quot;: &quot;浏览&quot;,
+            &quot;groupId&quot;: &quot;-&quot;,
+            &quot;description&quot;: &quot;可浏览某一个状态的权限&quot;,
+            &quot;departmentIdList&quot;: [
+                &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;
+            ],
+            &quot;statusList&quot;: [
+                1,
+                2,
+                3,
+                4,
+                1,
+                2,
+                3,
+                4
+            ],
+            &quot;departmentList&quot;: [
+                {
+                    &quot;id&quot;: &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                    &quot;name&quot;: &quot;要闻一部子部&quot;,
+                    &quot;parentId&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                    &quot;name&quot;: &quot;要闻一部子部&quot;,
+                    &quot;parentId&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                    &quot;name&quot;: &quot;要闻一部子部&quot;,
+                    &quot;parentId&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;BEC81C9F-6734-4146-B422-F9DF85F95920&quot;,
+                    &quot;name&quot;: &quot;要闻一部子部&quot;,
+                    &quot;parentId&quot;: &quot;8F7FAE74-BDD3-401B-9D0C-D966B879F106&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                    &quot;name&quot;: &quot;人民日报&quot;,
+                    &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                    &quot;name&quot;: &quot;人民日报&quot;,
+                    &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                    &quot;name&quot;: &quot;人民日报&quot;,
+                    &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;4A21AB47-3441-44DB-8C40-96CCF57BC531&quot;,
+                    &quot;name&quot;: &quot;人民日报&quot;,
+                    &quot;parentId&quot;: &quot;5B0B5639-9594-4330-B8F2-EB782F9B57A3&quot;
+                }
+            ]
+        }
+    ],
+    &quot;totalCount&quot;: 1,
+    &quot;commonResponse&quot;: {
+        &quot;success&quot;: true,
+        &quot;description&quot;: &quot;&quot;
+    }
+}
+</code></pre>
+
+<p>失败：400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="2_1">2.1新增选题目录</h3>
+<h3>request</h3>
+<p><code>POST http://server:port/cre/api/topic</code></p>
+<pre><code>{
+  &quot;userId&quot;:&quot;admin&quot;,
+  &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+  &quot;topicList&quot;: [
+    {
+      &quot;id&quot;: &quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;name&quot;: &quot;美军一航母战斗群驶入南海&quot;,
+      &quot;lifeCycleDays&quot;: 1,
+      &quot;keepSecretDays&quot;: 10,
+      &quot;participantId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;principalId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;createrId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;aclContent&quot;: &quot;ROLE_ID_SEARCHER,11,Viewer_download;admin,10,Admin;BB7957C8-AFA4-4C22-A8F6-96FA10ED795A,12,Editor;&quot;,
+      &quot;metadataInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;MetaData MetaDataCount=\&quot;1\&quot;&gt;&lt;sAttribute enumType=\&quot;0\&quot; strName=\&quot;选题状态\&quot;&gt;&lt;![CDATA[进行中]]&gt;&lt;/sAttribute&gt;&lt;/MetaData&gt;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;999104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;name&quot;: &quot;2016年两会&quot;,
+      &quot;lifeCycleDays&quot;: 1,
+      &quot;keepSecretDays&quot;: 10,
+      &quot;participantId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;principalId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;createrId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;aclContent&quot;: &quot;ROLE_ID_SEARCHER,11,Viewer_download;admin,10,Admin;BB7957C8-AFA4-4C22-A8F6-96FA10ED795A,12,Editor;&quot;,
+      &quot;metadataInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;MetaData MetaDataCount=\&quot;1\&quot;&gt;&lt;sAttribute enumType=\&quot;0\&quot; strName=\&quot;选题状态\&quot;&gt;&lt;![CDATA[终止]]&gt;&lt;/sAttribute&gt;&lt;/MetaData&gt;&quot;
+    }
+  ]
+}
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>增加选题目录的用户编号</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>topicList</td>
+	<td>需要添加的选题目录列表</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>id</td>
+	<td>选题目录id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>选题目录名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>lifeCycleDays</td>
+	<td>生命周期天数，超过之后，该目录自动删除，值为0时表示暂不设置生命周期。不确定是否有用</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>participantId</td>
+	<td>选题参与人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>principalId</td>
+	<td>选题负责人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>createrId</td>
+	<td>选题创建人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>keepSecretDays</td>
+	<td>解禁天数，超过之后该目录及其选题对所有用户公开，值为0时默认对所有用户公开。不确定是否有用</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>aclContent</td>
+	<td>访问控制描述。可设置多组访问者，由分号隔开。每组访问者内部分为3个元素，由逗号隔开，第一个元素是访问者id，可以为用户id/角色id/组织结构id，第二个元素为访问者类型，候选值如下，10：用户，11：角色，12：组织结构。第三个元素为操作组标识，候选值如下:Admin：管理员，AdvEditor：编辑者(高级)，Co-owner：拥有者，Editor：编辑者，Previewer：预览，Uploader：上传，Viewer：浏览，Viewer_download：浏览下载，Viewer_uploader：浏览上传，Viewer_uploader_download：浏览上传下载</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>metadataInfo</td>
+	<td>元数据信息</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<p>成功：201(http状态码)</p>
+<pre><code>ResponseBody
+{
+  &quot;addTopicListResponse&quot;: [
+    {
+      &quot;id&quot;: &quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;description&quot;: &quot;成功&quot;,
+      &quot;folderList&quot;: [
+        {
+          &quot;folderId&quot;: &quot;071717B0-401F-4D94-9F2B-605349CE9B6C&quot;,
+          &quot;topicType&quot;: 1
+        },
+        {
+          &quot;folderId&quot;: &quot;448129B9-A79C-4CE8-97D2-1E9FB5A15579&quot;,
+          &quot;topicType&quot;: 2
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;999104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;description&quot;: &quot;成功&quot;,
+      &quot;folderList&quot;: [
+        {
+          &quot;folderId&quot;: &quot;A6A73C56-FE43-4C78-BF31-DCF990302596&quot;,
+          &quot;topicType&quot;: 1
+        },
+        {
+          &quot;folderId&quot;: &quot;C299E767-A4B9-48A6-9B9C-7F301A83C91B&quot;,
+          &quot;topicType&quot;: 2
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<p>失败:400~500(http状态码)</p>
+<pre><code>ResponseBody
+{
+    &quot;addTopicListResponse&quot;: [{
+        &quot;id&quot;: &quot; EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;, //选题id
+        &quot;description&quot;: &quot;失败描述&quot;,      
+    }]
+}
+</code></pre>
+
+<h3 id="2_2">2.2修改选题目录</h3>
+<h3>request</h3>
+<p><code>PUT http://server:port/cre/api/topic</code></p>
+<pre><code>{
+  &quot;userId&quot;:&quot;admin&quot;,
+  &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+  &quot;topicList&quot;: [
+    {
+      &quot;id&quot;: &quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;name&quot;: &quot;美军一航母战斗群驶入南海(修改)&quot;,
+      &quot;lifeCycleDays&quot;: 1,
+      &quot;keepSecretDays&quot;: 10,
+      &quot;participantId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;principalId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;createrId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;aclContent&quot;: &quot;ROLE_ID_SEARCHER,11,Viewer_download;admin,10,Admin;BB7957C8-AFA4-4C22-A8F6-96FA10ED795A,12,Editor;&quot;,
+      &quot;metadataInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;MetaData MetaDataCount=\&quot;1\&quot;&gt;&lt;sAttribute enumType=\&quot;0\&quot; strName=\&quot;选题状态\&quot;&gt;&lt;![CDATA[进行中]]&gt;&lt;/sAttribute&gt;&lt;/MetaData&gt;&quot;
+    },
+    {
+      &quot;id&quot;: &quot;999104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;name&quot;: &quot;2016年两会(修改)&quot;,
+      &quot;lifeCycleDays&quot;: 1,
+      &quot;keepSecretDays&quot;: 10,
+      &quot;participantId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;principalId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;createrId&quot;:&quot;zhaoyangkun&quot;,
+      &quot;aclContent&quot;: &quot;ROLE_ID_SEARCHER,11,Viewer_download;admin,10,Admin;BB7957C8-AFA4-4C22-A8F6-96FA10ED795A,12,Editor;&quot;,
+      &quot;metadataInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;MetaData MetaDataCount=\&quot;1\&quot;&gt;&lt;sAttribute enumType=\&quot;0\&quot; strName=\&quot;选题状态\&quot;&gt;&lt;![CDATA[终止]]&gt;&lt;/sAttribute&gt;&lt;/MetaData&gt;&quot;
+    }
+  ]
+}    
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>修改选题目录的用户编号</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>topicList</td>
+	<td>选题目录列表</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>id</td>
+	<td>选题目录id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>选题目录名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>lifeCycleDays</td>
+	<td>生命周期天数，超过之后，该目录自动删除，值为0时表示暂不设置生命周期。不确定是否有用</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>participantId</td>
+	<td>选题参与人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>principalId</td>
+	<td>选题负责人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>createrId</td>
+	<td>选题创建人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>keepSecretDays</td>
+	<td>解禁天数，超过之后该目录及其选题对所有用户公开，值为0时默认对所有用户公开。不确定是否有用</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>aclContent</td>
+	<td>访问控制描述。可设置多组访问者，由分号隔开。每组访问者内部分为3个元素，由逗号隔开，第一个元素是访问者id，可以为用户id/角色id/组织结构id，第二个元素为访问者类型，候选值如下，10：用户，11：角色，12：组织结构。第三个元素为操作组标识，候选值如下:Admin：管理员，AdvEditor：编辑者(高级)，Co-owner：拥有者，Editor：编辑者，Previewer：预览，Uploader：上传，Viewer：浏览，Viewer_download：浏览下载，Viewer_uploader：浏览上传，Viewer_uploader_download：浏览上传下载</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>metadataInfo</td>
+	<td>元数据信息</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<p>成功：200(http状态码)</p>
+<pre><code>ResponseBody
+{
+  &quot;updateTopicListResponse&quot;: [
+    {
+      &quot;id&quot;: &quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;description&quot;: &quot;成功&quot;,
+      &quot;folderList&quot;: [
+        {
+          &quot;folderId&quot;: &quot;071717B0-401F-4D94-9F2B-605349CE9B6C&quot;,
+          &quot;topicType&quot;: 1
+        },
+        {
+          &quot;folderId&quot;: &quot;448129B9-A79C-4CE8-97D2-1E9FB5A15579&quot;,
+          &quot;topicType&quot;: 2
+        }
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;999104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+      &quot;description&quot;: &quot;成功&quot;,
+      &quot;folderList&quot;: [
+        {
+          &quot;folderId&quot;: &quot;A6A73C56-FE43-4C78-BF31-DCF990302596&quot;,
+          &quot;topicType&quot;: 1
+        },
+        {
+          &quot;folderId&quot;: &quot;C299E767-A4B9-48A6-9B9C-7F301A83C91B&quot;,
+          &quot;topicType&quot;: 2
+        }
+      ]
+    }
+  ]
+}
+
+</code></pre>
+
+<p>失败:400~500(http状态码)</p>
+<pre><code>ResponseBody
+{
+    &quot;updateTopicListResponse&quot;: [{
+        &quot;id&quot;: &quot; EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;, //选题id
+        &quot;description&quot;: &quot;失败描述&quot;,      
+    }]
+}
+</code></pre>
+
+<h3 id="2_3">2.3删除选题目录</h3>
+<h3>request</h3>
+<p><code>DELETE http://server:port/cre/api/topic</code></p>
+<pre><code>{
+  &quot;userId&quot;:&quot;admin&quot;,
+  &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+  &quot;isLogicDelete&quot;:true, 
+  &quot;ids&quot;:&quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD,999104CB-619B-446D-8E00-9BAB3340CEAD&quot;
+}
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>修改选题目录的用户编号</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>isLogicDelete</td>
+	<td>是否为逻辑删除。逻辑删除的目录会进入回收站，后续可还原。</td>
+	<td>boolean</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>ids</td>
+	<td>选题id，用逗号隔开</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<p>成功：204(http状态码)</p>
+<pre><code>ResponseBody
+{
+    &quot;deleteTopicListResponse&quot;: [{
+        &quot;id&quot;: &quot; EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;, //选题id
+        &quot;description&quot;: &quot;成功&quot;
+    }]
+}
+
+</code></pre>
+
+<p>失败:400~500(http状态码)</p>
+<pre><code>ResponseBody
+{
+    &quot;deleteTopicListResponse&quot;: [{
+        &quot;id&quot;: &quot; EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;, //选题id
+        &quot;description&quot;: &quot;失败描述&quot;,      
+    }]
+}
+</code></pre>
+
+<h3 id="2_4">2.4检索选题资源</h3>
+<h3>request</h3>
+<p><code>POST: http://server:port/cre/api/search</code></p>
+<pre><code>{
+  &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+  &quot;conditions&quot;: [
+    {                                                       
+      &quot;id&quot;: &quot;TOPICID&quot;,
+      &quot;value&quot;: &quot;911BCDCA-B272-4F52-B1F0-E476037716C6&quot;
+    },
+    {
+      &quot;id&quot;: &quot;TOPICTYPE&quot;,
+      &quot;value&quot;: &quot;1&quot;
+    }    
+  ],
+  &quot;userId&quot;: &quot;admin&quot;,
+  &quot;searchInFile&quot;: false,
+  &quot;extendResultFields&quot;: &quot;TOPICTYPE,产品状态&quot;, 
+  &quot;needSummary&quot;: true,
+  &quot;needHightLight&quot;: true,
+  &quot;orderBy&quot;: &quot;created desc&quot;,
+  &quot;start&quot;: 0,
+  &quot;limit&quot;: 20
+}   
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>id</td>
+	<td>字段id，除了一些字段有特殊含义之外，其余字段都可为任意的编目字段，CONTENT– 全文；NAME– 名称；CCID– 编目类id；TYPE– 资源类型；HDFLAG – 高标清标志（0：标清；1：高清）；CREATED – 创建时间；FILESTATUS – 文件状态；OWNER – 拥有者；ID – 资源ID；PARENTID – 父资源ID；ROOTID– 根资源ID；PROGCODE – 节目代码；PUBLISHSTATUS – 发布状态；FOLDERID – 资源目录ID；DOMAINTYPE – 资源域类型（0：公共资源域；1：群组资源域；2：个人资源域）</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>检索词。其中全文字段支持与或非表达式，空格表示“与”， or表示“或”， -表示“非”</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>userId</td>
+	<td>用户id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>searchInFile</td>
+	<td>是否在附件中检索，默认为false</td>
+	<td>boolean</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>extendResultFields</td>
+	<td>结果集每个条目额外返回的元数据项，需要返回多个时以逗号隔开</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>needSummary</td>
+	<td>结果集每个条目是否返回摘要信息，默认为true</td>
+	<td>boolean</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>needHightLight</td>
+	<td>结果集每个条目是否对名称和摘要命中检索词的部分进行高亮处理，默认为true</td>
+	<td>boolean</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>orderBy</td>
+	<td>排序。如果不填则按权重排序，如果填写排序方式，其格式为字段id+空格+排序方式，如“created desc”</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>结果集条目的起始位置，从0开始</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>结果集条目每页显示的数量，最大不超过1000</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<pre><code>{
+  &quot;commonResponse&quot;: {
+    &quot;success&quot;: true,
+    &quot;description&quot;: null
+  },
+  &quot;totalCount&quot;: 1,
+  &quot;start&quot;: 0,
+  &quot;limit&quot;: 20,
+  &quot;currentPage&quot;: 1,
+  &quot;totalPage&quot;: 1,
+  &quot;itemList&quot;: [
+    {
+      &quot;id&quot;: &quot;344A3CFF-DEE8-43F2-B783-C3297DDE6FE0&quot;,
+      &quot;name&quot;: &quot;视音频&lt;font color='red'&gt;测&lt;/font&gt;&lt;font color='red'&gt;试&lt;/font&gt;test003&quot;,
+      &quot;originalName&quot;: &quot;视音频测试test003&quot;,
+      &quot;ccid&quot;: &quot;新闻节目类&quot;,
+      &quot;type&quot;: 0,
+      &quot;subType&quot;: 0,
+      &quot;iconUrl&quot;: &quot;http://100.0.10.51/icon/2015/06/24/344A3CFF-DEE8-43F2-B783-C3297DDE6FE0.jpg&quot;,
+      &quot;detailUrl&quot;: &quot;http://100.0.10.51:8080/portal/toDetail?resourceID=DEC71C55-0A94-4158-A4D1-C5BCADFE3A02&quot;,
+      &quot;parentId&quot;: &quot;-&quot;,
+      &quot;rootId&quot;: &quot;344A3CFF-DEE8-43F2-B783-C3297DDE6FE0&quot;,
+      &quot;inpoint&quot;: 0,
+      &quot;outpoint&quot;: 0,
+      &quot;created&quot;: &quot;2015-07-14 13:37:45&quot;,
+      &quot;lastModify&quot;: &quot;2015-07-14 15:23:35&quot;,
+      &quot;mediaId&quot;: null,
+      &quot;downloadCounts&quot;: 1,
+      &quot;viewCounts&quot;: 3,
+      &quot;securityId&quot;: &quot;-&quot;,
+      &quot;fileStatus&quot;: 0,
+      &quot;videoStandard&quot;: 1,
+      &quot;progCode&quot;: null,
+      &quot;source&quot;: &quot;webupload&quot;,
+      &quot;hdFlag&quot;: 0,
+      &quot;afdType&quot;: 0,
+      &quot;proType&quot;: 0,
+      &quot;publishStatus&quot;: 0,
+      &quot;publishTime&quot;: null,
+      &quot;onlineLifeCycle&quot;: null,
+      &quot;seriesId&quot;: &quot;-&quot;,
+      &quot;seriesIndex&quot;: 1,
+      &quot;folderId&quot;: &quot;-&quot;,
+      &quot;point&quot;: 0,
+      &quot;reportCount&quot;: 0,
+      &quot;shareFlag&quot;: 0,
+      &quot;owner&quot;: null,
+      &quot;hasFile&quot;: 1,
+      &quot;summary&quot;: &quot;视音频&lt;font color='red'&gt;测&lt;/font&gt;&lt;font color='red'&gt;试&lt;/font&gt;test003 视音频&lt;font color='red'&gt;测
+
+&lt;/font&gt;&lt;font color='red'&gt;试&lt;/font&gt;test003 视音频&lt;font color='red'&gt;测&lt;/font&gt;&lt;font color='red'&gt;试&lt;/font&gt;test003 &quot;,
+      &quot;extendAttributes&quot;: [
+        {
+          &quot;id&quot;: &quot;频道&quot;,
+          &quot;name&quot;: &quot;频道&quot;,
+          &quot;value&quot;: &quot;CCTV-5&quot;
+        },
+        {
+          &quot;id&quot;: &quot;栏目名称&quot;,
+          &quot;name&quot;: &quot;栏目&quot;,
+          &quot;value&quot;: &quot;天下足球&quot;
+        },
+        {
+          &quot;id&quot;: &quot;首播日期&quot;,
+          &quot;name&quot;: &quot;首播日期&quot;,
+          &quot;value&quot;: &quot;2015-07-13 20:00:00&quot;
+        }
+      ],
+      &quot;metadataInfo&quot;: &quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;MetaData MetaDataCount=&quot;1&quot;&gt;&lt;sAttribute enumType=&quot;0&quot; strName=&quot;正题名&quot;&gt;&lt;![CDATA[资源详情.]]&gt;&lt;/sAttribute&gt;&lt;/MetaData&gt;&quot;,
+      &quot;files&quot;: [
+        {
+          &quot;fileId&quot;: &quot;1249586A-7951-48CD-8426-0D795B524500&quot;,
+          &quot;fileName&quot;: &quot;0b8e2fd3-872d-4361-84cb-74a0b2259a03_LOW_0.mp4&quot;,
+          &quot;fileType&quot;: 2,
+          &quot;fileTypeId&quot;: &quot;LOW&quot;,
+          &quot;fileSize&quot;: 27028637,
+          &quot;md5Code&quot;: &quot;&quot;,
+          &quot;streamMediaInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-16\&quot;?&gt;&lt;MEDIAINFO Version=\&quot;1.1\&quot;&gt;&lt;sStreamMediaInfo 
+
+enumStreamMediaType=\&quot;128\&quot; dwStreamMediaSubType=\&quot;0\&quot; bIsIncludeVideo=\&quot;1\&quot; bIsIncludeAudio=\&quot;1\&quot; 
+
+dwTotalAverDataRateInBitsPerSec=\&quot;0\&quot; dwTotalMaxDataRateInBitsPerSec=\&quot;0\&quot; dwTotalMinDataRateInBitsPerSec=
+
+\&quot;0\&quot;&gt;&lt;sVideoMediaInfo wWidth=\&quot;640\&quot; wHeight=\&quot;360\&quot; dwStandardRate=\&quot;25\&quot; dwStandardScale=\&quot;1\&quot; enumScanMode=\&quot;2\&quot; 
+
+enumColorFormat=\&quot;1024\&quot; enumVideoType=\&quot;8388608\&quot; dwVideoSubType=\&quot;1\&quot; dwDataRateInBitsPerSec=\&quot;1500000\&quot; bConstantRate=
+
+\&quot;1\&quot; dwGOPSize=\&quot;50\&quot; dwReferencePeriod=\&quot;3\&quot; bIsY16_235=\&quot;1\&quot; dwDisplayWidth=\&quot;16\&quot; dwDisplayHeight=\&quot;9\&quot; 
+
+enumColorPrimaries=\&quot;5\&quot; enumColorTransfer=\&quot;5\&quot; enumColorMatrix=\&quot;5\&quot; enumAFD=\&quot;8\&quot;/&gt;&lt;sAudioMediaInfo enumAudioType=\&quot;32\&quot; 
+
+dwAudioSubType=\&quot;0\&quot; dwChannels=\&quot;2\&quot; dwBitsPerSample=\&quot;16\&quot; dwSamplesPerSec=\&quot;48000\&quot; dwAvgBitsPerSec=\&quot;128000\&quot; 
+
+dwBlockAlign=\&quot;4\&quot; enumAudioCFG=\&quot;2\&quot; enumChannelSamplesFormat=\&quot;1\&quot;/&gt;&lt;/sStreamMediaInfo&gt;&lt;/MEDIAINFO&gt;&quot;,
+          &quot;uncPath&quot;: &quot;D:/Files/mamFiles/Low/2014/08/04&quot;,
+          &quot;streamMediaPath&quot;: &quot;http://192.168.205.59:8080/lowres/2014/08/04&quot;,
+          &quot;ftpPath&quot;: &quot;ftp://admin:admin@100.0.10.51/lowres/2014/08/04&quot;,
+          &quot;bitrateType&quot;: 1,
+          &quot;channelIndex&quot;: 0
+        },
+        {
+          &quot;fileId&quot;: &quot;3FB0CFF8-D608-45C7-81B1-873C1924203F&quot;,
+          &quot;fileName&quot;: &quot;0b8e2fd3-872d-4361-84cb-74a0b2259a03_HDV_0.mxf&quot;,
+          &quot;fileType&quot;: 0,
+          &quot;fileTypeId&quot;: &quot;SDV&quot;,
+          &quot;fileSize&quot;: 27028637000,
+          &quot;md5Code&quot;: &quot;&quot;,
+          &quot;streamMediaInfo&quot;: &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-16\&quot;?&gt;&lt;MEDIAINFO Version=\&quot;1.1\&quot;&gt;&lt;sStreamMediaInfo 
+
+enumStreamMediaType=\&quot;1\&quot; dwStreamMediaSubType=\&quot;0\&quot; bIsIncludeVideo=\&quot;1\&quot; bIsIncludeAudio=\&quot;0\&quot; llFileSize=\&quot;0\&quot; 
+
+dwVideoFrame=\&quot;0\&quot; dwAudioSamples=\&quot;0\&quot; dwTotalAverDataRateInBitsPerSec=\&quot;0\&quot; dwTotalMaxDataRateInBitsPerSec=\&quot;0\&quot; 
+
+dwTotalMinDataRateInBitsPerSec=\&quot;0\&quot;&gt;&lt;sVideoMediaInfo wWidth=\&quot;1920\&quot; wHeight=\&quot;1080\&quot; dwStandardRate=\&quot;25\&quot; 
+
+dwStandardScale=\&quot;1\&quot; enumScanMode=\&quot;0\&quot; enumColorFormat=\&quot;512\&quot; enumVideoType=\&quot;8\&quot; dwVideoSubType=\&quot;0\&quot; 
+
+dwDataRateInBitsPerSec=\&quot;50000000\&quot; bConstantRate=\&quot;1\&quot; dwGOPSize=\&quot;12\&quot; dwReferencePeriod=\&quot;3\&quot; bIsY16_235=\&quot;1\&quot; 
+
+dwDisplayWidth=\&quot;16\&quot; dwDisplayHeight=\&quot;9\&quot; enumColorPrimaries=\&quot;1\&quot; enumColorTransfer=\&quot;1\&quot; enumColorMatrix=\&quot;1\&quot; 
+
+enumAFD=\&quot;8\&quot;/&gt;&lt;sAudioMediaInfo enumAudioType=\&quot;1\&quot; dwAudioSubType=\&quot;0\&quot; dwChannels=\&quot;1\&quot; dwBitsPerSample=\&quot;16\&quot; 
+
+dwSamplesPerSec=\&quot;48000\&quot; dwAvgBitsPerSec=\&quot;768000\&quot; dwBlockAlign=\&quot;2\&quot; enumAudioCFG=\&quot;1\&quot; enumChannelSamplesFormat=
+
+\&quot;1\&quot;/&gt;&lt;/sStreamMediaInfo&gt;&lt;sStreamMediaInfo enumStreamMediaType=\&quot;4\&quot; dwStreamMediaSubType=\&quot;0\&quot; bIsIncludeVideo=\&quot;0\&quot; 
+
+bIsIncludeAudio=\&quot;1\&quot; llFileSize=\&quot;0\&quot; dwVideoFrame=\&quot;0\&quot; dwAudioSamples=\&quot;0\&quot; dwTotalAverDataRateInBitsPerSec=\&quot;0\&quot; 
+
+dwTotalMaxDataRateInBitsPerSec=\&quot;0\&quot; dwTotalMinDataRateInBitsPerSec=\&quot;0\&quot;&gt;&lt;sVideoMediaInfo wWidth=\&quot;720\&quot; wHeight=\&quot;576\&quot; 
+
+dwStandardRate=\&quot;25\&quot; dwStandardScale=\&quot;1\&quot; enumScanMode=\&quot;0\&quot; enumColorFormat=\&quot;1024\&quot; enumVideoType=\&quot;0\&quot; 
+
+dwVideoSubType=\&quot;0\&quot; dwDataRateInBitsPerSec=\&quot;25000000\&quot; bConstantRate=\&quot;1\&quot; dwGOPSize=\&quot;14\&quot; dwReferencePeriod=\&quot;2\&quot; 
+
+bIsY16_235=\&quot;1\&quot; dwDisplayWidth=\&quot;4\&quot; dwDisplayHeight=\&quot;3\&quot; enumColorPrimaries=\&quot;5\&quot; enumColorTransfer=\&quot;5\&quot; 
+
+enumColorMatrix=\&quot;5\&quot; enumAFD=\&quot;8\&quot;/&gt;&lt;sAudioMediaInfo enumAudioType=\&quot;1\&quot; dwAudioSubType=\&quot;0\&quot; dwChannels=\&quot;1\&quot; 
+
+dwBitsPerSample=\&quot;16\&quot; dwSamplesPerSec=\&quot;48000\&quot; dwAvgBitsPerSec=\&quot;768000\&quot; dwBlockAlign=\&quot;2\&quot; enumAudioCFG=\&quot;1\&quot; 
+
+enumChannelSamplesFormat=\&quot;1\&quot;/&gt;&lt;/sStreamMediaInfo&gt;&lt;/MEDIAINFO&gt;&quot;,
+          &quot;uncPath&quot;: &quot;D:/Files/mamFiles/High/2014/08/04&quot;,
+          &quot;streamMediaPath&quot;: &quot;&quot;,
+          &quot;ftpPath&quot;: &quot;ftp://admin:admin@100.0.10.51/High/2014/08/04&quot;,
+          &quot;bitrateType&quot;: 1,
+          &quot;channelIndex&quot;: 0
+        }
+      ]
+    }
+  ],
+  &quot;useTime&quot;: 113
+}
+</code></pre>
+
+<h3 id="2_5">2.5选题目录资源新增/另存为</h3>
+<h3>request</h3>
+<p><code>POST http://server:port/cre/api/topic/resource</code></p>
+<p><code>url参数：isSaveAs={0, 1}，0为新增，1为另存为，可不填，默认为新增</code></p>
+<p><code>请求</code></p>
+<pre><code>新增RequestBody：
+
+{
+    &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+    &quot;userId&quot;:&quot;admin&quot;,
+    &quot;userName&quot;:&quot;admin&quot;,
+    &quot;resourceList&quot;: [
+        {
+            &quot;id&quot;: &quot;901BCDCA-B272-4F52-B1F0-E476037716C6&quot;,
+            &quot;name&quot;: &quot;新纪录07&quot;,
+            &quot;proType&quot;: 0,
+            &quot;resourceType&quot;: 0,
+            &quot;source&quot;: &quot;Ingest&quot;,
+            &quot;scpInId&quot;:&quot;B5B2361F-6B55-408D-A11C-16CF9444C682&quot;,
+            &quot;ccid&quot;:&quot;新闻节目类&quot;,
+            &quot;duration&quot;: 1502,
+            &quot;topicId&quot;: &quot;EE2104CB-619B-446D-8E00-9BAB3340CEAD&quot;,
+            &quot;topicType&quot;:1,
+            &quot;topicParticipantId&quot;:&quot;zhaoyangkun,zhangsan&quot;,
+            &quot;topicPrincipalId&quot;:&quot;zhaoyangkun&quot;,
+            &quot;topicCreaterId&quot;:&quot;zhaoyangkun&quot;,
+            &quot;files&quot;: [
+                {
+                    &quot;fileId&quot;: &quot;C648E3DF-E107-42FF-A25E-1D62380DA2B4&quot;,
+                    &quot;fileName&quot;: &quot;高清eLORS测试.ts&quot;,
+                    &quot;fileType&quot;:2,
+                    &quot;md5Code&quot;: &quot;&quot;,
+                    &quot;fileSize&quot;:&quot;423424&quot;,
+                    &quot;ftpPath&quot;: &quot;&quot;,
+                    &quot;streamMediaPath&quot;: &quot;&quot;,
+                    &quot;uncPath&quot;: &quot;\\\\100.0.10.168\\cretest\\Low-Res\\2015\\06\\17&quot;
+                }
+            ]
+        }
+    ]
+}     
+
+另存为RequestBody：
+
+{
+    &quot;token&quot;:&quot;ST-53-R4FZlngYZ2eAzdofZd7J-cas&quot;,
+    &quot;userId&quot;:&quot;0003&quot;,
+    &quot;userName&quot;:&quot;0003&quot;,
+    &quot;resourceList&quot;: [
+        {
+            &quot;id&quot;: &quot;734BD133-4019-48D4-866D-F1642002FBBD&quot;,
+            &quot;name&quot;: &quot;资源复制测试20160630002&quot;,
+            &quot;scpInId&quot;:&quot;539D001C-1205-422F-9895-86146B472E9E&quot;,
+            &quot;source&quot;:&quot;DYEIDT&quot;,
+            &quot;topicId&quot;:&quot;681EDCD3-3AA1-4F79-89BB-4214941B2558&quot;,
+            &quot;topicType&quot;: 1,
+            &quot;topicParticipantId&quot;:&quot;zhaoyangkun,zhangsan&quot;,
+            &quot;topicPrincipalId&quot;:&quot;zhaoyangkun&quot;,
+            &quot;topicCreaterId&quot;:&quot;zhaoyangkun&quot;,
+            &quot;files&quot;: [
+                {
+                    &quot;fileId&quot;: &quot;C648E3DF-E107-42FF-A25E-1D62380DA2B4&quot;,
+                    &quot;fileName&quot;: &quot;高清eLORS测试.ts&quot;
+                }
+            ]
+        }
+    ]
+}
+
+</code></pre>
+
+<p><code>新增参数：</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>userId</td>
+	<td>创建选题的用户编号</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>userName</td>
+	<td>创建选题的用户名称</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>resourceList</td>
+	<td>上述参数均为接口级别的参数，以下参数均为选题级别的参数</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>id</td>
+	<td>选题资源id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>选题资源名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>proType</td>
+	<td>节目类型，默认值为0,候选值如下:0：节目；1：素材</td>
+	<td>int</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>resourceType</td>
+	<td>资源类型，默认值为0,候选值如下:0：视音频资源；1：纯音频资源；2：集合类资源（剧集类，CD集合类，收录资源池等）；3：图片资源；4：文档资源；5：复杂资源；6：主题资源；7：文件夹资源；8：新闻串联单资源；9：新闻条目资源；10：全媒体稿件资源；11：微信；12：微博；13：短信；14：互联网网页；15：宣传计划；16：新闻线索</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>source</td>
+	<td>来源系统</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>scpInId”</td>
+	<td>入库参数id,可选，如果传递按照此id匹配入库参数，如果不传递，则通过source获取入库参数</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>ccid</td>
+	<td>编目类</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>duration</td>
+	<td>资源时长,单位（帧 ）</td>
+	<td>long</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicId</td>
+	<td>目录id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicType</td>
+	<td>目录类型1：素材 2：产品</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicParticipantId</td>
+	<td>参与人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicPrincipalId</td>
+	<td>负责人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicCreaterId</td>
+	<td>创建人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>files</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>fileId</td>
+	<td>资源文件id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileName</td>
+	<td>资源文件名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileType</td>
+	<td>文件类型，候选值如下:0：标清；1：单声道；2：低码率（可同时表示视音频，图片和文档的低码文件）；3：服务器；4：关键帧；5：高清；6：立体声；7：图文（废弃）；8：Zxcel2k；9：IMAGE；10：肖像；11：字幕；12：文档；100：其它(其他附件)</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>md5Code</td>
+	<td>MD5码</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileSize</td>
+	<td>文件大小，单位是字节-byte, 检验入库的栏目空间时需要传递</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>ftpPath</td>
+	<td>ftp路径</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>streamMediaPath</td>
+	<td>流媒体路径</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>uncPath</td>
+	<td>unc路径</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<p><code>另存为参数：</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>token</td>
+	<td>令牌</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>userId</td>
+	<td>创建选题的用户编号</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>userName</td>
+	<td>创建选题的用户名称</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>resourceList</td>
+	<td>上述参数均为接口级别的参数，以下参数均为选题级别的参数</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>id</td>
+	<td>选题id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>选题名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>source</td>
+	<td>来源系统</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>scpInId”</td>
+	<td>入库参数id,可选，如果传递按照此id匹配入库参数，如果不传递，则通过source获取入库参数</td>
+	<td>string</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>topicId</td>
+	<td>选题目录id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicType</td>
+	<td>选题目录类型1：素材 2：产品</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicParticipantId</td>
+	<td>参与人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicPrincipalId</td>
+	<td>负责人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>topicCreaterId</td>
+	<td>创建人id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>files</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+</tr>
+<tr>
+	<td>fileId</td>
+	<td>资源文件id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileName</td>
+	<td>资源文件名称</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>响应</h3>
+<p>成功：201(http状态码)</p>
+<pre><code>新增ResponseBody
+{
+  &quot;addResourceListResponse&quot;: [
+    {
+      &quot;id&quot;: &quot;901BCDCA-B272-4F52-B1F0-E476037716C6&quot;,
+      &quot;success&quot;: true,
+      &quot;description&quot;: &quot;成功&quot;
+    }
+  ]
+}
+
+另存为ResponseBody
+{
+    &quot;saveAsResourceListResponse&quot;: [{
+            &quot;id&quot;: &quot;911BCDCA-B272-4F52-B1F0-E476037716C6&quot;,//新资源ID
+            &quot;description&quot;: &quot;成功&quot;
+    }]
+}
+</code></pre>
+
+<p>失败:400~500(http状态码)</p>
+<pre><code>新增ResponseBody
+{
+    &quot;addResourceListResponse&quot;: [{
+            &quot;id&quot;: &quot;901BCDCA-B272-4F52-B1F0-E476037716C6&quot;,
+            &quot;success&quot;: false,
+            &quot;description&quot;: &quot;失败描述&quot;
+    }]
+}
+
+另存为ResponseBody
+{
+    &quot;saveAsResourceListResponse&quot;: [{
+            &quot;id&quot;: &quot;911BCDCA-B272-4F52-B1F0-E476037716C6&quot;,
+            &quot;description&quot;: &quot;失败描述&quot;
+    }]
+}
+</code></pre>
+
+<h3 id="3_1">3.1获取文件存储路径及流媒体路径</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/resources/richText/{resourceId}/filePath?fileNameSuffix={png}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>string</td>
+	<td>稿件id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileNameSuffix</td>
+	<td>string</td>
+	<td>文件名后缀(不传递该参数时返回的相对路径和文件名称为空)</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>isAttachment</td>
+	<td>boolean</td>
+	<td>是否是附件类型（默认否）</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>{
+  &quot;uncRootPath&quot;: &quot;\\\\192.168.8.240\\storage\\path\\Low-Res&quot;,           //unc根路径
+  &quot;localRootPath&quot;: &quot;/mnt/storage/path/Low-Res&quot;,                         //本机根路径
+  &quot;httpRootPath&quot;: &quot;http://192.168.8.244/crelow&quot;,            //流媒体根路径
+  &quot;relativePath&quot;: &quot;2017/06/22&quot;,         //相对路径
+  &quot;fileName&quot;: &quot;723FCB2B-C615-44B0-9897-69C1221A29FF_LOW_0.mp4&quot;,     //文件名称
+  &quot;fileTypeId&quot;:&quot;ATTACHMENT&quot;, //文件类型
+  &quot;fullName&quot;:&quot;\\\\192.168.8.240\\storage\\path\\Other/2017/06/23/28CFB8E9-6714-42C4-B6D9-E5DE48632562_IMAGE_0.jpg&quot;,//文件全路径
+  &quot;fullPath&quot;:&quot;\\\\192.168.8.240\\storage\\path\\Other/2017/06/23&quot;, //文件的目录全路径&quot;
+  &quot;ftpPath&quot;: &quot;/Other&quot; //ftp路径
+}
+</code></pre>
+
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_2">3.2创建资源文件</h3>
+<h3>request</h3>
+<p><code>PUT http://server:port/cre/api/resources/richText/{resoureId}/file</code></p>
+<pre><code>{
+  &quot;fileId&quot;: &quot;fjq9348fj823u49f&quot;,
+  &quot;fileName&quot;: &quot;ffj09-fj349fj-jf34jf0f-f203fj_IMAGE_0.png&quot;,
+  &quot;fileTypeId&quot;:&quot;ATTACHMENT&quot;,
+  &quot;extension&quot;:&quot;jpg&quot;,
+  &quot;fileSize&quot;:20000,
+  &quot;relativePath&quot;:&quot;2017/06/23&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>string</td>
+	<td>稿件id(该id在客户端维护，此时cre可能并未存在该资源)</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileId</td>
+	<td>string</td>
+	<td>文件id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileName</td>
+	<td>string</td>
+	<td>文件名称</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileTypeId</td>
+	<td>string</td>
+	<td>文件类型ID</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>extension</td>
+	<td>string</td>
+	<td>文件后缀名</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileSize</td>
+	<td>int</td>
+	<td>文件大小</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>relativePath</td>
+	<td>string</td>
+	<td>相对路径</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_3">3.3获取稿件最新版本详细信息</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/resources/richText/{resoureId}/latestVersion</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>string</td>
+	<td>稿件id</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>{ 
+  &quot;title&quot;: &quot;习近平参访&quot;,                         //标题
+  &quot;eyebrowHead&quot;: &quot;习近平参访&quot;,                   //引题
+  &quot;subtitle&quot;: &quot;习近平参访&quot;,                      //副标题
+  &quot;content&quot;: &quot;&lt;p&gt;习近平&lt;/p&gt;参访&quot;,                //内容
+  &quot;createTime&quot;: 2304982034890,                  //创建时间，1990年后毫秒数
+  &quot;editorId&quot;: &quot;faweofjq9in0dfqj23o&quot;,            //最后编辑人
+  &quot;authorName&quot;: &quot;张三&quot;,                           //作者姓名
+  &quot;topicId&quot;: &quot;fjw90fno9f20hq2389f&quot;,             //选题id
+  &quot;topicName&quot;: &quot;一带一路&quot;,                      //选题名称    
+  &quot;auditorId&quot;: &quot;fja30fjo349&quot;,                   //审核人id
+  &quot;auditorName&quot;: &quot;李四&quot;,                          //审核人名称
+  &quot;productStatus&quot;: &quot;待审核&quot;,                       //产品状态，产品状态分为&quot;草稿，待审核，被驳回，审核通过，已发布&quot;
+  &quot;source&quot;: &quot;新华社&quot;,                          //来源
+  &quot;keyWords&quot;: &quot;时政&quot;,                         //关键词
+  &quot;attachmentList&quot;: [
+    {
+      &quot;fileId&quot;: &quot;aof39rfj90w3rj2&quot;,          //附件id
+      &quot;fileName&quot;: &quot;file.jpg&quot;,                       //附件名称
+      &quot;httpPath&quot;: &quot;http://192.168.8.244/file.jpg&quot;   //附件的http路径
+      &quot;fileType&quot;: &quot;IMAGE&quot;                       //文件类型，IMAGE(图片)，DOCUMENT(文档)，HDV(高清视频)，SDV(标清视频)
+    }
+  ]
+}
+</code></pre>
+
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_4">3.4获取稿件所有版本详细信息</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/resources/richText/{resoureId}/allVersion</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>string</td>
+	<td>稿件id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>isEveryOneLatest</td>
+	<td>boolean</td>
+	<td>是否值获取每个人最新的版本</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>versionList</td>
+	<td>string</td>
+	<td>版本号，可传递多个 '?versionList=version_1&amp;versionList=version2&amp;versionList=version_3'，如果传递了该参数，isEveryOneLatest参数无效</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>[{
+  &quot;version&quot;: &quot;version_1&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;习近平&lt;/p&gt;参访&quot;,
+  &quot;contentText&quot;: &quot;习近平参访&quot;,
+  &quot;authorId&quot;: &quot;faweofjq9in0dfqj23o&quot;,
+  &quot;author&quot;: &quot;张三&quot;,
+  &quot;createTime&quot;: 128308102398,
+  &quot;color&quot;: &quot;#9999FF&quot;
+},{
+  &quot;version&quot;: &quot;version_2&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;习近平&lt;/p&gt;参访新加坡&quot;,
+  &quot;contentText&quot;: &quot;习近平参访新加坡&quot;,
+  &quot;authorId&quot;: &quot;fafhw4rfn8w349f&quot;,
+  &quot;author&quot;: &quot;李四&quot;
+  &quot;createTime&quot;: 128308102399,
+  &quot;color&quot;: &quot;#FFFF33&quot;
+},{
+  &quot;version&quot;: &quot;version_3&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;习近平&lt;/p&gt;于12日参访新加坡&quot;,
+  &quot;contentText&quot;: &quot;习近平于12日参访新加坡&quot;,
+  &quot;authorId&quot;: &quot;faweofjq9in0dfqj23o&quot;,
+  &quot;author&quot;: &quot;张三&quot;
+  &quot;createTime&quot;: 128308102490,
+  &quot;color&quot;: &quot;#99CCFF&quot;
+}]
+</code></pre>
+
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_5">3.5保存稿件</h3>
+<h3>request</h3>
+<p><code>PUT http://server:port/cre/api/resources/richText/{resoureId}?newVersion={true or false}</code></p>
+<pre><code>{
+  &quot;title&quot;: &quot;习近平参访&quot;,
+  &quot;eyebrowHead&quot;: &quot;习近平参访&quot;,
+  &quot;subtitle&quot;: &quot;习近平参访&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;习近平&lt;/p&gt;参访&quot;,
+  &quot;contentText&quot; : &quot;习近平参访&quot;,
+  &quot;wordCount&quot;: 5,
+  &quot;folderId&quot;: &quot;ajfqf09q3-faj0-fq903fjodfj&quot;,
+  &quot;editorId&quot;: &quot;faweofjq9in0dfqj23o&quot;,        
+  &quot;authorName&quot;: &quot;张三&quot;,                           
+  &quot;topicId&quot;: &quot;fjw90fno9f20hq2389f&quot;,
+  &quot;topicName&quot;: &quot;一带一路&quot;,  
+  &quot;auditorId&quot;: &quot;fja30fjo349&quot;,
+  &quot;auditorName&quot;: &quot;李四&quot;,
+  &quot;productStatus&quot;: &quot;待审核&quot;,
+  &quot;source&quot;: &quot;新华社&quot;,
+  &quot;keyWords&quot;: &quot;时政&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>string</td>
+	<td>稿件id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>newVersion</td>
+	<td>boolean</td>
+	<td>是否为新版本(不填默认为false)，当用户点击保存时传递false，点击保存并关闭时传递true</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>title</td>
+	<td>string</td>
+	<td>标题</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>eyebrowHead</td>
+	<td>string</td>
+	<td>引题</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>subtitle</td>
+	<td>string</td>
+	<td>副标题</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>content</td>
+	<td>string</td>
+	<td>稿件内容</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>contentText</td>
+	<td>string</td>
+	<td>去掉html标签之后的富文本内容</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>wordCount</td>
+	<td>string</td>
+	<td>字数</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>folderId</td>
+	<td>string</td>
+	<td>目录ID</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>editorId</td>
+	<td>string</td>
+	<td>当前编辑人</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>authorName</td>
+	<td>string</td>
+	<td>作者姓名</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>topicId</td>
+	<td>string</td>
+	<td>选题id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>topicName</td>
+	<td>string</td>
+	<td>选题名称</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>auditorId</td>
+	<td>string</td>
+	<td>审核人id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>auditorName</td>
+	<td>string</td>
+	<td>审核人名称</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>productStatus</td>
+	<td>string</td>
+	<td>产品状态([如果选择了直接通过(只有当前用户有审核权限(PID_AUDIT_PRODUCT)时才显示该选项，值为&quot;审核通过&quot;，如果选择了审核人，值为&quot;待审核&quot;, 否则为&quot;草稿&quot;])</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>source</td>
+	<td>string</td>
+	<td>来源</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>keyWords</td>
+	<td>string</td>
+	<td>关键词</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_6">3.6删除文件</h3>
+<h3>request</h3>
+<p><code>DELETE http://server:port/cre/api/resources/richText/{resoureId}/file/{fileId}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>资源Id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>fileId</td>
+	<td>文件id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<p>失败:400/500</p>
+<pre><code>{
+    &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_7">3.7获取附件列表</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/resources/richText/{resoureId}/attachments</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>资源Id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>[
+    {
+      &quot;fileId&quot;: &quot;aof39rfj90w3rj2&quot;,          //附件id
+      &quot;fileName&quot;: &quot;file.jpg&quot;,                       //附件名称
+      &quot;httpPath&quot;: &quot;http://192.168.8.244/file.jpg&quot;   //附件的http路径
+      &quot;fileType&quot;: &quot;IMAGE&quot;                       //文件类型，IMAGE(图片)，DOCUMENT(文档)，HDV(高清视频)，SDV(标清视频)
+    }
+  ]
+</code></pre>
+
+<p>失败:400/500</p>
+<pre><code>{
+    &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="4_1">4.1获取逻辑目录</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/logicFolders</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>userId</td>
+	<td>用户id(url参数)</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>[
+  {
+    &quot;name&quot;: &quot;个人资源&quot;,         //目录名称
+    &quot;searchConditions&quot;: [],     //检索条件，直接将此字段传递给2.4接口的conditions即可
+    &quot;children&quot;: [               //子目录
+      {
+        &quot;name&quot;: &quot;素材&quot;,
+        &quot;searchConditions&quot;: []
+      }
+    ]
+  },
+  {
+    &quot;name&quot;: &quot;相关部门&quot;,
+    &quot;searchConditions&quot;: [],
+    &quot;children&quot;: [
+      {
+        &quot;name&quot;: &quot;总编室&quot;,
+        &quot;searchConditions&quot;: []
+      }
+    ]
+  }
+]
+</code></pre>
+
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;:&quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="5_1">5.1获取资源操作信息</h3>
+<h3>request</h3>
+<p><code>GET http://server:port/cre/api/searchAuditLogging?resourceId=resourceId&amp;limit=0&amp;start=10</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>描述</th>
+	<th>类型</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>resourceId</td>
+	<td>资源id</td>
+	<td>string</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>分页条件，每页显示多少条</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>分页条件，从第几条开始</td>
+	<td>int</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功:200</p>
+<pre><code>{
+  &quot;limit&quot;: 10,
+  &quot;items&quot;: [{
+            &quot;created&quot;: &quot;2017-07-19 10:01:48&quot;,           //操作时间
+            &quot;id&quot;: &quot;4c56bada-485a-4a63-8f1f-94ace4253765&quot;,
+            &quot;describe&quot;: &quot;&quot;,                             //操作描述（审核意见）
+            &quot;detailOperation&quot;:&quot;&quot;,                       //操作详细描述
+            &quot;operateDescribe&quot;: &quot;新建&quot;,                    //操作内容
+            &quot;operator&quot;: {
+                &quot;uid&quot;: &quot;e18a0f771ac4485fa9107d8382326e57&quot;,
+                &quot;uname&quot;: &quot;黄少明&quot;                      //操作人
+            }
+        }],
+  &quot;totalCount&quot;: 1,
+  &quot;start&quot;: 1,
+  &quot;currentPage&quot;: 1,
+  &quot;totalPage&quot;: 0
+}
+</code></pre>
+
+<p>失败:400~500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
