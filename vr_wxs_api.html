@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vr_wxs_api</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<div style="
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    cursor: pointer;
+"><a href="#table">返回顶部</a></div>
+<h1>wxs服务接口</h1>
+<h2 id="table">目录</h2>
+<ol>
+<li>
+<a href="#1">播放终端管理</a>
+<ul>
+<li><a href="#1_1">1.1创建终端</a></li>
+<li><a href="#1_2">1.2修改终端</a></li>
+<li><a href="#1_3">1.3删除终端</a>  
+</li>
+</ul>
+</li>
+<li>
+<a href="#2">影片管理</a>
+<ul>
+<li><a href="#2_1">2.1创建影片</a></li>
+<li><a href="#2_2">2.2查询影片</a></li>
+<li><a href="#2_3">2.3修改影片</a></li>
+<li><a href="#2_4">2.4为影片点赞</a></li>
+</ul>
+</li>
+<li>
+<a href="#3">点播单管理</a>
+<ul>
+<li><a href="#3_1">3.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</a></li>
+<li><a href="#3_2">3.2从点播单中删除影片</a></li>
+<li><a href="#3_3">3.3查询点播单</a></li>
+<li><a href="#3_4">3.4查询点播单中的电影</a></li>
+<li><a href="#3_5">3.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</a></li>
+<li><a href="#3_6">3.6修改点播单</a></li>
+<li><a href="#3_7">3.7向点播单报告问题</a></li>
+</ul>
+</li>
+<li>
+<a href="#4">系统枚举参数管理</a>
+<ul>
+<li><a href="#4_1">4.1修改系统枚举参数</a></li>
+<li><a href="#4_2">4.2查询系统枚举参数</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="1">1.播放终端管理</h2>
+<h3 id="1_1">1.1创建终端</h3>
+<h3>request</h3>
+<p><code>POST /wxs/vr_clients</code></p>
+<pre><code>{
+  &quot;clientID&quot;: &quot;fqj3fjp9ejfp9w8f983qf9q9p8&quot;,
+  &quot;cinameID&quot;: &quot;eirt93q8jg9pw8j458398&quot;,
+  &quot;hallID&quot;: &quot;fqofjp98jf9p8q3948fq3&quot;,
+  &quot;seatNumber&quot;: &quot;02&quot;,
+  &quot;model&quot;: &quot;vr0109&quot;,
+  &quot;MACAddr&quot;: &quot;99:ed:9d:3b:e8:36&quot;,
+  &quot;IPAddr&quot;: &quot;192.168.8.28&quot;,
+  &quot;description&quot;: &quot;描述&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>clientID</td>
+	<td>string</td>
+	<td>vr client id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>cinameID</td>
+	<td>string</td>
+	<td>影院id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>hallID</td>
+	<td>string</td>
+	<td>放映厅id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>seatNumber</td>
+	<td>string</td>
+	<td>座位号</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>model</td>
+	<td>string</td>
+	<td>机器型号</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>MACAddr</td>
+	<td>string</td>
+	<td>座椅主机的mac地址</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>IPAddr</td>
+	<td>string</td>
+	<td>座椅主机的ip地址</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>description</td>
+	<td>string</td>
+	<td>描述(最长265个字)</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;clientID&quot;: &quot;fqj3fjp9ejfp9w8f983qf9q9p8&quot;
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_2">1.2修改终端</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/vr_clients/{client_id}</code></p>
+<h3>response</h3>
+<h3 id="1_3">1.3删除终端</h3>
+<h3>request</h3>
+<p><code>DELETE /wxs/vr_clients/{client_id}</code></p>
+<h3>response</h3>
+<h2 id="2">2.影片管理</h2>
+<h3 id="2_1">2.1创建影片</h3>
+<h3>request</h3>
+<p><code>POST /wxs/movies</code></p>
+<pre><code>{
+  &quot;movieID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;,
+  &quot;cinemaDistributedList&quot;: [{
+    &quot;cinemaID&quot;: &quot;dfijq398f9q8f9q3w8f98q&quot;
+  },{
+    &quot;cinemaID&quot;: &quot;fqiefiewngriw3nfrni83h&quot;
+  }],
+  &quot;name&quot;: &quot;NAME&quot;,
+  &quot;movieCode&quot;: &quot;movieCode&quot;,
+  &quot;duration&quot;: 30,
+  &quot;description&quot;: &quot;简介&quot;,
+  &quot;type&quot;: &quot;MOVIE&quot;,
+  &quot;category&quot;: &quot;ACTION&quot;,
+  &quot;country&quot;: &quot;USA&quot;,
+  &quot;iconURL&quot;: &quot;asdfhf09q38fdhuf98q938f98pq&quot;,
+  &quot;posterURL&quot;: &quot;g928gj98es9gw45jg98rsgfp9s8u&quot;,
+  &quot;scheduleStart&quot;: &quot;1510208988793&quot;,
+  &quot;scheduleEnd&quot;: &quot;1510208989793&quot;,
+  &quot;online&quot;: true,
+  &quot;weixinURL&quot;: &quot;https://mp.weixin.qq.com/s?__biz=MzI5NjQ3OTg1Mw==&amp;mid=2247483989&amp;idx=1&amp;sn=df852bf7447d293b6d6f34d5791a9d80&amp;chksm=ec42ff57db3576413dbacf1288bc6be4d271a7db7aefc093e485c01026b3a645130e3e7b41a2&amp;scene=0#rd&quot;,
+  &quot;price&quot;: &quot;29.9&quot;,
+  &quot;isHot&quot;: true
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>movieID</td>
+	<td>string</td>
+	<td>电影id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>cinemaDistributedList</td>
+	<td>list</td>
+	<td>已经分发的影院列表</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>cinemaDistributedList[].cinemaID</td>
+	<td>list</td>
+	<td>影院id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>string</td>
+	<td>电影名称</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>movieCode</td>
+	<td>string</td>
+	<td>电影编号</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>duration</td>
+	<td>int</td>
+	<td>电影时长，单位是分钟</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>description</td>
+	<td>string</td>
+	<td>电影简介</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>string</td>
+	<td>类型枚举，有MOVIE(电影)，GUIDE(前导片)，AD(广告)</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>category</td>
+	<td>string</td>
+	<td>电影分类枚举，有ACTION(动作)，SCIENCE(科幻)，等，可多传，用逗号(,)隔开</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>country</td>
+	<td>string</td>
+	<td>电影发行国家枚举，有USA(美国)，CHN(中国)等</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>iconURL</td>
+	<td>string</td>
+	<td>icon http 地址</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>posterURL</td>
+	<td>string</td>
+	<td>poster http 地址</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>scheduleStart</td>
+	<td>long</td>
+	<td>档期开始日期</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>scheduleEnd</td>
+	<td>long</td>
+	<td>档期结束日期</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>online</td>
+	<td>boolean</td>
+	<td>影片是否上线，默认false</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>weixinURL</td>
+	<td>string</td>
+	<td>影片在微信上的简介</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>price</td>
+	<td>double</td>
+	<td>价格</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>isHot</td>
+	<td>boolean</td>
+	<td>是否热映</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;movieID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="2_2">2.2查询影片</h3>
+<h3>request</h3>
+<p><code>GET /wxs/movies</code></p>
+<h3>respose</h3>
+<h3 id="2_3">2.3修改影片</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/movies/{movie_id}</code></p>
+<h3>respose</h3>
+<h3 id="2_4">2.4修改影片</h3>
+<h3>request</h3>
+<p><code>POST /wxs/movies/{movieID}/_praise</code></p>
+<h3>response</h3>
+<h2 id="3">3.点播单管理</h2>
+<h3 id="3_1">3.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/orders/movie</code></p>
+<pre><code>{
+  &quot;movieID&quot;: &quot;fqofnaieujfoiq3jfoaew&quot;,
+  &quot;userOpenID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>movieID</td>
+	<td>string</td>
+	<td>所添加的影片id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>userOpenID</td>
+	<td>string</td>
+	<td>微信给用户对本公众号分配的唯一标识，获取方法<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842">参考</a></td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;orderID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="3_2">3.2从点播单中删除影片</h3>
+<h3>request</h3>
+<p><code>DELETE /wxs/orders/{orderID}/movie/{movieID}</code></p>
+<h3>response</h3>
+<h3 id="3_3">3.3查询点播单</h3>
+<h3>request</h3>
+<p><code>GET /wxs/orders</code></p>
+<h3>response</h3>
+<h3 id="3_4">3.4查询点播单中的电影</h3>
+<h3>request</h3>
+<p><code>GET /wxs/orders/{orderID}/movies</code></p>
+<h3>response</h3>
+<h3 id="3_5">3.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</h3>
+<h3>request</h3>
+<p><code>GET /wxs/payment/params</code></p>
+<h3>response</h3>
+<h3 id="3_6">3.6修改点播单</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/orders/{orderID}</code></p>
+<h3>response</h3>
+<h3 id="3_7">3.7向点播单报告问题</h3>
+<h3>request</h3>
+<p><code>POST /wxs/orders/{orderID}/complaint</code></p>
+<h3>response</h3>
+<h2 id="4">4.系统枚举参数管理</h2>
+<h3 id="4_1">4.1修改系统枚举参数</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/sys_params/enum</code></p>
+<pre><code>{
+  &quot;movieCountryList&quot;: [             //电影发行国
+    {
+      &quot;id&quot;: &quot;CHN&quot;,
+      &quot;name&quot;: &quot;中国&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;USA&quot;,
+      &quot;name&quot;: &quot;美国&quot;
+    }
+  ],
+  &quot;movieCategoryList&quot;: [            //电影分类
+    {
+      &quot;id&quot;: &quot;ACTION&quot;,
+      &quot;name&quot;: &quot;动作&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;SCIENCE&quot;,
+      &quot;name&quot;: &quot;科幻&quot;,
+      &quot;isDefault&quot;: true
+    }  
+  ],
+  &quot;cinemaRegionList&quot;: [             //影院区域
+    {
+      &quot;id&quot;: &quot;BEIJING&quot;,
+      &quot;name&quot;: &quot;北京&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;SHANGHAI&quot;,
+      &quot;name&quot;: &quot;上海&quot;
+    }
+  ],
+  &quot;userRoleList&quot;: [                 //用户角色
+    {
+      &quot;id&quot;: &quot;SYS_ADMIN&quot;,
+      &quot;name&quot;: &quot;系统管理员&quot;,
+      &quot;isDefault&quot;: true
+    },{
+      &quot;id&quot;: &quot;MANAGER&quot;,
+      &quot;name&quot;: &quot;管理员&quot;
+    }]
+}
+</code></pre>
+
+<h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="4_2">4.2查询系统枚举参数</h3>
+<h3>request</h3>
+<p><code>GET /wxs/sys_params/enum</code></p>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;movieCountryList&quot;: [             //电影发行国
+    {
+      &quot;id&quot;: &quot;CHN&quot;,
+      &quot;name&quot;: &quot;中国&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;USA&quot;,
+      &quot;name&quot;: &quot;美国&quot;
+    }
+  ],
+  &quot;movieCategoryList&quot;: [            //电影分类
+    {
+      &quot;id&quot;: &quot;ACTION&quot;,
+      &quot;name&quot;: &quot;动作&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;SCIENCE&quot;,
+      &quot;name&quot;: &quot;科幻&quot;,
+      &quot;isDefault&quot;: true
+    }  
+  ],
+  &quot;cinemaRegionList&quot;: [             //影院区域
+    {
+      &quot;id&quot;: &quot;BEIJING&quot;,
+      &quot;name&quot;: &quot;北京&quot;,
+      &quot;isDefault&quot;: true
+    },
+    {
+      &quot;id&quot;: &quot;SHANGHAI&quot;,
+      &quot;name&quot;: &quot;上海&quot;
+    }
+  ],
+  &quot;userRoleList&quot;: [                 //用户角色
+    {
+      &quot;id&quot;: &quot;SYS_ADMIN&quot;,
+      &quot;name&quot;: &quot;系统管理员&quot;,
+      &quot;isDefault&quot;: true
+    },{
+      &quot;id&quot;: &quot;MANAGER&quot;,
+      &quot;name&quot;: &quot;管理员&quot;
+    }]
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
