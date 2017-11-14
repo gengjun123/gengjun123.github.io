@@ -368,9 +368,10 @@ img {
 <li><a href="#8">获取系统枚举参数</a></li>
 </ol>
 <h2 id="1">1.影院管理</h2>
-<h3 id="1_1">1.1新增影院</h3>
+<h3 id="1_1">1.1创建影院</h3>
 <h3>request</h3>
 <p><code>POST /cms/cinemas</code></p>
+<p><code>Content-Type : text/plain</code></p>
 <pre><code>{
   &quot;cinemaCode&quot;: &quot;huabeiqu_cinema_0001&quot;,
   &quot;name&quot;: &quot;X立方长宁缤谷&quot;,
@@ -437,6 +438,7 @@ img {
 </tbody>
 </table>
 <h3>response</h3>
+<h4>接口成功与否，通过http状态码来标识，200代表成功，400代表请求参数错误，500代表服务器错误，以下悉同。</h4>
 <p>成功 200</p>
 <pre><code>{
   &quot;cinemaID&quot;: &quot;fqj39fha8ef9q83fp983q9er&quot;
@@ -449,26 +451,139 @@ img {
 }
 </code></pre>
 
-<h3 id="1_2">1.2查找影院</h3>
+<h3 id="1_2">1.2查询影院</h3>
 <h3>request</h3>
-<p><code>GET /cms/cinemas</code></p>
+<p><code>GET /cms/cinemas?region_id={region_id}&amp;cinema_id={cinema_id}&amp;cinema_code={cinema_code}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>region_id</td>
+	<td>string</td>
+	<td>区域id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>cinema_id</td>
+	<td>string</td>
+	<td>影院id，可多传，<code>cinema_id={cinema_id1}&amp;cinema_id={cinema_id2}</code></td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>cinema_code</td>
+	<td>string</td>
+	<td>影院编码</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>int</td>
+	<td>分页开始，默认为0</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>int</td>
+	<td>页面大小，默认为20</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;totalCount&quot;: 100,
+  &quot;itemList&quot;: [
+    {
+      &quot;cinemaID&quot;: &quot;fqj39fha8ef9q83fp983q9er&quot;,
+      &quot;cinemaCode&quot;: &quot;huabeiqu_cinema_0001&quot;,
+      &quot;name&quot;: &quot;X立方长宁缤谷&quot;,
+      &quot;numberOfHalls&quot;: 4,
+      &quot;regionID&quot;: &quot;fqj943f89ad8f9q3hf489ewa&quot;,
+      &quot;comsMACAddr&quot;: &quot;ef:23:7e:cc:8a&quot;,
+      &quot;comsIPAddr&quot;: &quot;192.168.8.21&quot;,
+      &quot;description&quot;: &quot;第二家店&quot;
+    },{
+      ...
+    }
+  ]
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="1_3">1.3修改影院</h3>
 <h3>request</h3>
 <p><code>PUT /cms/cinemas/{cinemasId}</code></p>
+<p><code>Content-Type : text/plain</code></p>
+<pre><code>{  
+  &quot;name&quot;: &quot;X立方长宁缤谷&quot;,
+  &quot;numberOfHalls&quot;: 4,
+  &quot;regionID&quot;: &quot;fqj943f89ad8f9q3hf489ewa&quot;,
+  &quot;comsMACAddr&quot;: &quot;ef:23:7e:cc:8a&quot;,  
+  &quot;comsIPAddr&quot;: &quot;192.168.8.21&quot;,
+  &quot;description&quot;: &quot;第二家店&quot;,
+}
+</code></pre>
+
+<h4>字段描述见<a href="#1_1">1.1创建影院</a></h4>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="1_4">1.4删除影院</h3>
 <h3>request</h3>
-<p><code>DELETE /cms/cinemas</code></p>
+<p><code>DELETE /cms/cinemas?cinema_id={cinema_id1}&amp;cinema_id={cinema_id2}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>cinema_id</td>
+	<td>string</td>
+	<td>影院id，可多传，<code>cinema_id={cinema_id1}&amp;cinema_id={cinema_id2}</code></td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h2 id="2">2.放映厅管理</h2>
 <h3 id="2_1">2.1创建放映厅</h3>
 <h3>request</h3>
 <p><code>POST /cms/halls</code></p>
+<p><code>Content-Type : text/plain</code></p>
 <pre><code>{
   &quot;hallCode&quot;: &quot;guanghualu_cinema_0001_hall_01&quot;,
   &quot;name&quot;: &quot;放映厅01&quot;,
-  &quot;cinemaIDNumber&quot;: &quot;guanghualu_cinema_0001&quot;,
+  &quot;cinemaID&quot;: &quot;qiejgq3984jf9384jf9ef93q8&quot;,
   &quot;numberOfSeats&quot;: 10
 }
 </code></pre>
@@ -496,7 +611,7 @@ img {
 	<td>是</td>
 </tr>
 <tr>
-	<td>cinemaIDNumber</td>
+	<td>cinemaID</td>
 	<td>string</td>
 	<td>放映厅所属影院id</td>
 	<td>是</td>
@@ -524,24 +639,134 @@ img {
 
 <h3 id="2_2">2.2查询放映厅</h3>
 <h3>request</h3>
-<p><code>GET /cms/halls</code></p>
+<p><code>GET /cms/halls?cinema_id={cinema_id}&amp;hall_id={hall_id1}&amp;hall_id={hall_id2}&amp;hall_code={hall_code}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>cinema_id</td>
+	<td>string</td>
+	<td>所属影院id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>hall_id</td>
+	<td>string</td>
+	<td>放映厅id，可多传</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>hall_code</td>
+	<td>string</td>
+	<td>放映厅编码</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>int</td>
+	<td>分页开始，默认为0</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>int</td>
+	<td>页面大小，默认为20</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;totalCount&quot;: 100,
+  &quot;itemList&quot;: [
+    {
+      &quot;hallID&quot;: &quot;fqj3fjp9ejfp9w8f983qf9q9p8&quot;
+      &quot;hallCode&quot;: &quot;guanghualu_cinema_0001_hall_01&quot;,
+      &quot;name&quot;: &quot;放映厅01&quot;,
+      &quot;cinemaID&quot;: &quot;qiejgq3984jf9384jf9ef93q8&quot;,
+      &quot;numberOfSeats&quot;: 10
+    },{
+      ...
+    }
+  ]
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="2_3">2.3修改放映厅</h3>
 <h3>request</h3>
-<p><code>PUT /cms/halls/{hallIdNumber}</code></p>
+<p><code>PUT /cms/halls/{hall_id}</code></p>
+<p><code>Content-Type : text/plain</code></p>
+<pre><code>{
+  &quot;hallCode&quot;: &quot;guanghualu_cinema_0001_hall_01&quot;,
+  &quot;name&quot;: &quot;放映厅01&quot;,
+  &quot;cinemaID&quot;: &quot;qiejgq3984jf9384jf9ef93q8&quot;,
+  &quot;numberOfSeats&quot;: 10
+}
+</code></pre>
+
+<p>参数描述见<a href="#2_1">2.1创建放映厅</a></p>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="2_4">2.4删除放映厅</h3>
 <h3>request</h3>
-<p><code>DELETE /cms/halls</code></p>
+<p><code>DELETE /cms/halls?hall_id={hall_id1}&amp;hall_id={hall_id2}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>hall_id</td>
+	<td>string</td>
+	<td>放映厅id，可多传</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h2 id="3">3.播放终端管理</h2>
 <h3 id="3_1">3.1创建终端</h3>
 <h3>request</h3>
 <p><code>POST /cms/vr_clients</code></p>
+<p><code>Content-Type : text/plain</code></p>
 <pre><code>{
   &quot;hallID&quot;: &quot;fqofjp98jf9p8q3948fq3&quot;,
   &quot;seatNumber&quot;: &quot;02&quot;,
-  &quot;model&quot;: &quot;vr0109&quot;,
+  &quot;hostModel&quot;: &quot;windows07&quot;,  
+  &quot;seatModel&quot;: &quot;vr0109&quot;,
+  &quot;HMDModel&quot;: &quot;hmd109&quot;,
   &quot;MACAddr&quot;: &quot;99:ed:9d:3b:e8:36&quot;,
   &quot;IPAddr&quot;: &quot;192.168.8.28&quot;,
   &quot;description&quot;: &quot;描述&quot;
@@ -571,16 +796,28 @@ img {
 	<td>是</td>
 </tr>
 <tr>
-	<td>model</td>
+	<td>hostModel</td>
 	<td>string</td>
-	<td>机器型号</td>
-	<td>是</td>
+	<td>播放终端使用的主机型号</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>seatModel</td>
+	<td>string</td>
+	<td>座椅型号</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>HMDModel</td>
+	<td>string</td>
+	<td>头盔型号</td>
+	<td>否</td>
 </tr>
 <tr>
 	<td>MACAddr</td>
 	<td>string</td>
 	<td>座椅主机的mac地址</td>
-	<td>是</td>
+	<td>否</td>
 </tr>
 <tr>
 	<td>IPAddr</td>
@@ -611,16 +848,127 @@ img {
 
 <h3 id="3_2">3.2查询终端</h3>
 <h3>request</h3>
-<p><code>GET /cms/vr_clients</code></p>
+<p><code>GET /cms/vr_clients?client_id={client_id}&amp;cinema_id={cinema_id}&amp;hall_id={hall_id}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>client_id</td>
+	<td>string</td>
+	<td>客户端id，可多传</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>cinema_id</td>
+	<td>string</td>
+	<td>影院id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>hall_id</td>
+	<td>string</td>
+	<td>播放厅id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>int</td>
+	<td>分页开始，默认为0</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>int</td>
+	<td>页面大小，默认为20</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<pre><code>{
+  &quot;totalCount&quot;: 100,
+  &quot;itemList&quot;: [
+    {
+      &quot;clientID&quot;: &quot;fjefijsieuf93q849f8ejf&quot;,             //终端id
+      &quot;cinemaID&quot;: &quot;qoifjp938f983q4udgihue&quot;,
+      &quot;hallID&quot;: &quot;fqofjp98jf9p8q3948fq3&quot;,
+      &quot;status&quot;: &quot;IDLE&quot;,   
+      &quot;seatNumber&quot;: &quot;02&quot;,  
+      &quot;hostModel&quot;: &quot;windows07&quot;,
+      &quot;seatModel&quot;: &quot;vr0109&quot;,
+      &quot;HMDModel&quot;: &quot;hmd109&quot;,
+      &quot;MACAddr&quot;: &quot;99:ed:9d:3b:e8:36&quot;,
+      &quot;IPAddr&quot;: &quot;192.168.8.28&quot;,
+      &quot;description&quot;: &quot;描述&quot;
+    },{
+      ...
+    }
+  ]
+}
+</code></pre>
+
+<p><code>座椅状态(status)枚举：SHUT_DOWN(关机) / IDLE(空闲) / IN_VOD(点播) / PLAYING(播放) / ERROR(错误)</code></p>
 <h3 id="3_3">3.3修改终端</h3>
 <h3>request</h3>
 <p><code>PUT /cms/vr_clients/{client_id}</code></p>
+<p><code>Content-Type : text/plain</code></p>
+<pre><code>{  
+  &quot;seatNumber&quot;: &quot;02&quot;,
+  &quot;hostModel&quot;: &quot;windows07&quot;,  
+  &quot;status&quot;: &quot;SHUT_DOWN&quot;,
+  &quot;seatModel&quot;: &quot;vr0109&quot;,
+  &quot;HMDModel&quot;: &quot;hmd109&quot;,
+  &quot;MACAddr&quot;: &quot;99:ed:9d:3b:e8:36&quot;,
+  &quot;IPAddr&quot;: &quot;192.168.8.28&quot;,
+  &quot;description&quot;: &quot;描述&quot;
+}
+</code></pre>
+
+<p>字段描述见<a href="#3_1">3.1创建终端</a></p>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="3_4">3.4删除终端</h3>
 <h3>request</h3>
-<p><code>DELETE /cms/vr_clients</code></p>
+<p><code>DELETE /cms/vr_clients?client_id={client_id1}&amp;client_id={client_id2}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>client_id</td>
+	<td>string</td>
+	<td>客户端id，可多传</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h3 id="3_5">3.5生成终端二维码</h3>
 <h3>request</h3>
 <p><code>GET /cms/vr_clients/{client_id}/qr_code</code></p>
@@ -867,7 +1215,7 @@ img {
 
 <h3 id="4_4">4.4查询影片</h3>
 <h3>request</h3>
-<p><code>GET /wxs/movies</code></p>
+<p><code>GET /cms/movies</code></p>
 <h3>response</h3>
 <h3 id="4_5">4.5修改影片</h3>
 <h3>request</h3>
@@ -875,7 +1223,7 @@ img {
 <h3>response</h3>
 <h3 id="4_6">4.6为影片点赞</h3>
 <h3>request</h3>
-<p><code>POST /wxs/movies/{movieID}/_praise</code></p>
+<p><code>POST /cms/movies/{movieID}/_praise</code></p>
 <h3>response</h3>
 <h3 id="4_7">4.7删除影片</h3>
 <h3>request</h3>
