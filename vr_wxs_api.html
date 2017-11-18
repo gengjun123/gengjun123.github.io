@@ -301,321 +301,31 @@ img {
 <h2 id="table">目录</h2>
 <ol>
 <li>
-<a href="#1">播放终端管理</a>
+<a href="#1">点播单管理</a>
 <ul>
-<li><a href="#1_1">1.1创建终端</a></li>
-<li><a href="#1_2">1.2修改终端</a></li>
-<li><a href="#1_3">1.3删除终端</a>  
+<li><a href="#1_1">1.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</a></li>
+<li><a href="#1_2">1.2从点播单中删除影片</a></li>
+<li><a href="#1_3">1.3查询点播单</a>  
 </li>
+<li><a href="#1_4">1.4获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</a></li>
+<li><a href="#1_5">1.5修改点播单</a></li>
+<li><a href="#1_6">1.6向点播单报告问题</a></li>
 </ul>
 </li>
 <li>
-<a href="#2">影片管理</a>
+<a href="#2">微信用户管理</a>
 <ul>
-<li><a href="#2_1">2.1创建影片</a></li>
-<li><a href="#2_2">2.2查询影片</a></li>
-<li><a href="#2_3">2.3修改影片</a></li>
-<li><a href="#2_4">2.4为影片点赞</a></li>
-</ul>
-</li>
-<li>
-<a href="#3">点播单管理</a>
-<ul>
-<li><a href="#3_1">3.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</a></li>
-<li><a href="#3_2">3.2从点播单中删除影片</a></li>
-<li><a href="#3_3">3.3查询点播单</a></li>
-<li><a href="#3_4">3.4查询点播单中的电影</a></li>
-<li><a href="#3_5">3.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</a></li>
-<li><a href="#3_6">3.6修改点播单</a></li>
-<li><a href="#3_7">3.7向点播单报告问题</a></li>
-</ul>
-</li>
-<li>
-<a href="#4">系统枚举参数管理</a>
-<ul>
-<li><a href="#4_1">4.1修改系统枚举参数</a></li>
-<li><a href="#4_2">4.2查询系统枚举参数</a></li>
+<li><a href="#2_1">2.1查询用户</a></li>
 </ul>
 </li>
 </ol>
-<h2 id="1">1.播放终端管理</h2>
-<h3 id="1_1">1.1创建终端</h3>
+<h2 id="1">1.点播单管理</h2>
+<h3 id="1_1">1.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</h3>
 <h3>request</h3>
-<p><code>POST /wxs/vr_clients</code></p>
-<pre><code>{
-  &quot;clientID&quot;: &quot;fqj3fjp9ejfp9w8f983qf9q9p8&quot;,
-  &quot;cinameID&quot;: &quot;eirt93q8jg9pw8j458398&quot;,
-  &quot;hallID&quot;: &quot;fqofjp98jf9p8q3948fq3&quot;,
-  &quot;seatNumber&quot;: &quot;02&quot;,
-  &quot;model&quot;: &quot;vr0109&quot;,
-  &quot;MACAddr&quot;: &quot;99:ed:9d:3b:e8:36&quot;,
-  &quot;IPAddr&quot;: &quot;192.168.8.28&quot;,
-  &quot;description&quot;: &quot;描述&quot;
-}
-</code></pre>
-
-<table>
-<thead>
-<tr>
-	<th>名称</th>
-	<th>类型</th>
-	<th>描述</th>
-	<th>是否必须</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-	<td>clientID</td>
-	<td>string</td>
-	<td>vr client id</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>cinameID</td>
-	<td>string</td>
-	<td>影院id</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>hallID</td>
-	<td>string</td>
-	<td>放映厅id</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>seatNumber</td>
-	<td>string</td>
-	<td>座位号</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>model</td>
-	<td>string</td>
-	<td>机器型号</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>MACAddr</td>
-	<td>string</td>
-	<td>座椅主机的mac地址</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>IPAddr</td>
-	<td>string</td>
-	<td>座椅主机的ip地址</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>description</td>
-	<td>string</td>
-	<td>描述(最长265个字)</td>
-	<td>否</td>
-</tr>
-</tbody>
-</table>
-<h3>response</h3>
-<p>成功 200</p>
-<pre><code>{
-  &quot;clientID&quot;: &quot;fqj3fjp9ejfp9w8f983qf9q9p8&quot;
-}
-</code></pre>
-
-<p>失败 400/500</p>
-<pre><code>{
-  &quot;info&quot;: &quot;失败描述&quot;
-}
-</code></pre>
-
-<h3 id="1_2">1.2修改终端</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/vr_clients/{client_id}</code></p>
-<h3>response</h3>
-<h3 id="1_3">1.3删除终端</h3>
-<h3>request</h3>
-<p><code>DELETE /wxs/vr_clients/{client_id}</code></p>
-<h3>response</h3>
-<h2 id="2">2.影片管理</h2>
-<h3 id="2_1">2.1创建影片</h3>
-<h3>request</h3>
-<p><code>POST /wxs/movies</code></p>
-<pre><code>{
-  &quot;movieID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;,
-  &quot;cinemaDistributedList&quot;: [{
-    &quot;cinemaID&quot;: &quot;dfijq398f9q8f9q3w8f98q&quot;
-  },{
-    &quot;cinemaID&quot;: &quot;fqiefiewngriw3nfrni83h&quot;
-  }],
-  &quot;name&quot;: &quot;NAME&quot;,
-  &quot;movieCode&quot;: &quot;movieCode&quot;,
-  &quot;duration&quot;: 30,
-  &quot;description&quot;: &quot;简介&quot;,
-  &quot;type&quot;: &quot;MOVIE&quot;,
-  &quot;category&quot;: &quot;ACTION&quot;,
-  &quot;country&quot;: &quot;USA&quot;,
-  &quot;iconURL&quot;: &quot;asdfhf09q38fdhuf98q938f98pq&quot;,
-  &quot;posterURL&quot;: &quot;g928gj98es9gw45jg98rsgfp9s8u&quot;,
-  &quot;scheduleStart&quot;: &quot;1510208988793&quot;,
-  &quot;scheduleEnd&quot;: &quot;1510208989793&quot;,
-  &quot;online&quot;: true,
-  &quot;weixinURL&quot;: &quot;https://mp.weixin.qq.com/s?__biz=MzI5NjQ3OTg1Mw==&amp;mid=2247483989&amp;idx=1&amp;sn=df852bf7447d293b6d6f34d5791a9d80&amp;chksm=ec42ff57db3576413dbacf1288bc6be4d271a7db7aefc093e485c01026b3a645130e3e7b41a2&amp;scene=0#rd&quot;,
-  &quot;price&quot;: &quot;29.9&quot;,
-  &quot;isHot&quot;: true
-}
-</code></pre>
-
-<table>
-<thead>
-<tr>
-	<th>名称</th>
-	<th>类型</th>
-	<th>描述</th>
-	<th>是否必须</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-	<td>movieID</td>
-	<td>string</td>
-	<td>电影id</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>cinemaDistributedList</td>
-	<td>list</td>
-	<td>已经分发的影院列表</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>cinemaDistributedList[].cinemaID</td>
-	<td>list</td>
-	<td>影院id</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>name</td>
-	<td>string</td>
-	<td>电影名称</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>movieCode</td>
-	<td>string</td>
-	<td>电影编号</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>duration</td>
-	<td>int</td>
-	<td>电影时长，单位是分钟</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>description</td>
-	<td>string</td>
-	<td>电影简介</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>string</td>
-	<td>类型枚举，有MOVIE(电影)，GUIDE(前导片)，AD(广告)</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>category</td>
-	<td>string</td>
-	<td>电影分类枚举，有ACTION(动作)，SCIENCE(科幻)，等，可多传，用逗号(,)隔开</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>country</td>
-	<td>string</td>
-	<td>电影发行国家枚举，有USA(美国)，CHN(中国)等</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>iconURL</td>
-	<td>string</td>
-	<td>icon http 地址</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>posterURL</td>
-	<td>string</td>
-	<td>poster http 地址</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>scheduleStart</td>
-	<td>long</td>
-	<td>档期开始日期</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>scheduleEnd</td>
-	<td>long</td>
-	<td>档期结束日期</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>online</td>
-	<td>boolean</td>
-	<td>影片是否上线，默认false</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>weixinURL</td>
-	<td>string</td>
-	<td>影片在微信上的简介</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>price</td>
-	<td>double</td>
-	<td>价格</td>
-	<td>是</td>
-</tr>
-<tr>
-	<td>isHot</td>
-	<td>boolean</td>
-	<td>是否热映</td>
-	<td>否</td>
-</tr>
-</tbody>
-</table>
-<h3>response</h3>
-<p>成功 200</p>
-<pre><code>{
-  &quot;movieID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
-}
-</code></pre>
-
-<p>失败 400/500</p>
-<pre><code>{
-  &quot;info&quot;: &quot;失败描述&quot;
-}
-</code></pre>
-
-<h3 id="2_2">2.2查询影片</h3>
-<h3>request</h3>
-<p><code>GET /wxs/movies</code></p>
-<h3>respose</h3>
-<h3 id="2_3">2.3修改影片</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/movies/{movie_id}</code></p>
-<h3>respose</h3>
-<h3 id="2_4">2.4修改影片</h3>
-<h3>request</h3>
-<p><code>POST /wxs/movies/{movieID}/_praise</code></p>
-<h3>response</h3>
-<h2 id="3">3.点播单管理</h2>
-<h3 id="3_1">3.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/orders/movie</code></p>
+<p><code>POST /wxs/tickets/movies</code></p>
 <pre><code>{
   &quot;movieID&quot;: &quot;fqofnaieujfoiq3jfoaew&quot;,
-  &quot;userOpenID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;
+  &quot;openID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;
 }
 </code></pre>
 
@@ -636,7 +346,7 @@ img {
 	<td>是</td>
 </tr>
 <tr>
-	<td>userOpenID</td>
+	<td>openID</td>
 	<td>string</td>
 	<td>微信给用户对本公众号分配的唯一标识，获取方法<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842">参考</a></td>
 	<td>是</td>
@@ -646,7 +356,7 @@ img {
 <h3>response</h3>
 <p>成功 200</p>
 <pre><code>{
-  &quot;orderID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
+  &quot;ticketID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
 }
 </code></pre>
 
@@ -656,81 +366,9 @@ img {
 }
 </code></pre>
 
-<h3 id="3_2">3.2从点播单中删除影片</h3>
+<h3 id="1_2">1.2从点播单中删除影片</h3>
 <h3>request</h3>
-<p><code>DELETE /wxs/orders/{orderID}/movie/{movieID}</code></p>
-<h3>response</h3>
-<h3 id="3_3">3.3查询点播单</h3>
-<h3>request</h3>
-<p><code>GET /wxs/orders</code></p>
-<h3>response</h3>
-<h3 id="3_4">3.4查询点播单中的电影</h3>
-<h3>request</h3>
-<p><code>GET /wxs/orders/{orderID}/movies</code></p>
-<h3>response</h3>
-<h3 id="3_5">3.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</h3>
-<h3>request</h3>
-<p><code>GET /wxs/payment/params</code></p>
-<h3>response</h3>
-<h3 id="3_6">3.6修改点播单</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/orders/{orderID}</code></p>
-<h3>response</h3>
-<h3 id="3_7">3.7向点播单报告问题</h3>
-<h3>request</h3>
-<p><code>POST /wxs/orders/{orderID}/complaint</code></p>
-<h3>response</h3>
-<h2 id="4">4.系统枚举参数管理</h2>
-<h3 id="4_1">4.1修改系统枚举参数</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/sys_params/enum</code></p>
-<pre><code>{
-  &quot;movieCountryList&quot;: [             //电影发行国
-    {
-      &quot;id&quot;: &quot;CHN&quot;,
-      &quot;name&quot;: &quot;中国&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;USA&quot;,
-      &quot;name&quot;: &quot;美国&quot;
-    }
-  ],
-  &quot;movieCategoryList&quot;: [            //电影分类
-    {
-      &quot;id&quot;: &quot;ACTION&quot;,
-      &quot;name&quot;: &quot;动作&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;SCIENCE&quot;,
-      &quot;name&quot;: &quot;科幻&quot;,
-      &quot;isDefault&quot;: true
-    }  
-  ],
-  &quot;cinemaRegionList&quot;: [             //影院区域
-    {
-      &quot;id&quot;: &quot;BEIJING&quot;,
-      &quot;name&quot;: &quot;北京&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;SHANGHAI&quot;,
-      &quot;name&quot;: &quot;上海&quot;
-    }
-  ],
-  &quot;userRoleList&quot;: [                 //用户角色
-    {
-      &quot;id&quot;: &quot;SYS_ADMIN&quot;,
-      &quot;name&quot;: &quot;系统管理员&quot;,
-      &quot;isDefault&quot;: true
-    },{
-      &quot;id&quot;: &quot;MANAGER&quot;,
-      &quot;name&quot;: &quot;管理员&quot;
-    }]
-}
-</code></pre>
-
+<p><code>DELETE /wxs/tickets/{ticket_id}/movies/{movie_id}</code></p>
 <h3>response</h3>
 <p>成功 200</p>
 <p>失败 400/500</p>
@@ -739,55 +377,71 @@ img {
 }
 </code></pre>
 
-<h3 id="4_2">4.2查询系统枚举参数</h3>
+<h3 id="1_3">1.3查询点播单</h3>
 <h3>request</h3>
-<p><code>GET /wxs/sys_params/enum</code></p>
+<p><code>GET /wxs/tickets?open_id={open_id}&amp;status={status}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>open_id</td>
+	<td>string</td>
+	<td>微信用户openid</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>status</td>
+	<td>string</td>
+	<td>点播单状态</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>int</td>
+	<td>分页开始，默认为0</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>int</td>
+	<td>页面大小，默认为20</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
 <p>成功 200</p>
 <pre><code>{
-  &quot;movieCountryList&quot;: [             //电影发行国
+  &quot;totalCount&quot;: 30,
+  &quot;itemList&quot;: [
     {
-      &quot;id&quot;: &quot;CHN&quot;,
-      &quot;name&quot;: &quot;中国&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;USA&quot;,
-      &quot;name&quot;: &quot;美国&quot;
-    }
-  ],
-  &quot;movieCategoryList&quot;: [            //电影分类
-    {
-      &quot;id&quot;: &quot;ACTION&quot;,
-      &quot;name&quot;: &quot;动作&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;SCIENCE&quot;,
-      &quot;name&quot;: &quot;科幻&quot;,
-      &quot;isDefault&quot;: true
-    }  
-  ],
-  &quot;cinemaRegionList&quot;: [             //影院区域
-    {
-      &quot;id&quot;: &quot;BEIJING&quot;,
-      &quot;name&quot;: &quot;北京&quot;,
-      &quot;isDefault&quot;: true
-    },
-    {
-      &quot;id&quot;: &quot;SHANGHAI&quot;,
-      &quot;name&quot;: &quot;上海&quot;
-    }
-  ],
-  &quot;userRoleList&quot;: [                 //用户角色
-    {
-      &quot;id&quot;: &quot;SYS_ADMIN&quot;,
-      &quot;name&quot;: &quot;系统管理员&quot;,
-      &quot;isDefault&quot;: true
+        &quot;ticketID&quot;: &quot;fqp9j384jf83498uf9e&quot;,          
+        &quot;status&quot;: &quot;PENDING_PAYMENT&quot;,                
+        &quot;progressPhase&quot;: &quot;TO_DISTRIBUTE&quot;,           
+        &quot;price&quot;: 6000,
+        &quot;actualPrice&quot;: 5000,
+        &quot;payMode&quot;: &quot;WEIXIN&quot;,
+        &quot;payTime&quot;: 1510994684570,
+        &quot;viewerOpenID&quot;: &quot;23ofj9q08ef93q849fq83f&quot;,
+        &quot;viewerNickName&quot;: &quot;张三&quot;,
+        &quot;vrClientID&quot;: &quot;fdj3efjs98er9f83fj9e8f9&quot;,
+        &quot;seatNumber&quot;: &quot;001&quot;,
+        &quot;cinemaName&quot;: &quot;西单vr影院&quot;,
+        &quot;hallName&quot;: &quot;001厅&quot;,     
+        &quot;movieIDList&quot;: [&quot;aw0e9f9839fj93q8f&quot;,&quot;jf9fej9pq3ep9fq39f&quot;,&quot;jf9qjf983f9&quot;],
+        &quot;startTime&quot;: 1510995105068,
+        &quot;expireTime&quot;: 3000
     },{
-      &quot;id&quot;: &quot;MANAGER&quot;,
-      &quot;name&quot;: &quot;管理员&quot;
-    }]
+      ...
+    }
+  ]
 }
 </code></pre>
 
@@ -797,6 +451,284 @@ img {
 }
 </code></pre>
 
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>ticketID</td>
+	<td>string</td>
+	<td>点播单id</td>
+</tr>
+<tr>
+	<td>status</td>
+	<td>string</td>
+	<td>点播单状态</td>
+</tr>
+<tr>
+	<td>progressPhase</td>
+	<td>string</td>
+	<td>点播单进度</td>
+</tr>
+<tr>
+	<td>price</td>
+	<td>int</td>
+	<td>价格，单位为分</td>
+</tr>
+<tr>
+	<td>actualPrice</td>
+	<td>int</td>
+	<td>实际价格</td>
+</tr>
+<tr>
+	<td>payMode</td>
+	<td>string</td>
+	<td>支付方式，WEIXIN / ALIPAY</td>
+</tr>
+<tr>
+	<td>payTime</td>
+	<td>long</td>
+	<td>支付时间</td>
+</tr>
+<tr>
+	<td>viewerOpenID</td>
+	<td>string</td>
+	<td>观众微信id</td>
+</tr>
+<tr>
+	<td>viewerNickName</td>
+	<td>string</td>
+	<td>观众微信昵称</td>
+</tr>
+<tr>
+	<td>vrClientID</td>
+	<td>string</td>
+	<td>订单所在座椅id</td>
+</tr>
+<tr>
+	<td>seatNumber</td>
+	<td>string</td>
+	<td>订单所在座椅编号</td>
+</tr>
+<tr>
+	<td>cinemaName</td>
+	<td>string</td>
+	<td>订单所在影院名称</td>
+</tr>
+<tr>
+	<td>hallName</td>
+	<td>string</td>
+	<td>订单所在影厅名称</td>
+</tr>
+<tr>
+	<td>movieIDList</td>
+	<td>list</td>
+	<td>订单包含影片id</td>
+</tr>
+<tr>
+	<td>startTime</td>
+	<td>long</td>
+	<td>订单生效时间</td>
+</tr>
+<tr>
+	<td>expireTime</td>
+	<td>int</td>
+	<td>订单失效时间间隔</td>
+</tr>
+</tbody>
+</table>
+<p><code>点播单状态(status)枚举：PENDING_PAYMENT(待付款) / ALREADY_PAID(已付款) / OVER_TIME(超出观看时间)</code></p>
+<p><code>点播单进度(progressPhase)枚举:TO_DISTRIBUTE(待派发) / DISTRIBUTED(已派发) / PLAYING(已执行，播放中) / COMPLETED(播放完成) / TO_TERMINATE(待终止，即观众中途离开，并未点击观看完成) / TERMINATED(已终止，即管理员强行将播放终止)</code></p>
+<h3 id="1_4">1.4获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</h3>
+<h3>request</h3>
+<p><code>GET /wxs/tickets/{ticket_id}/weixin_payment/params</code></p>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;timestamp&quot;: 1510995105068,
+  &quot;nonceStr&quot;: &quot;qoidsj9ifjq434aodsgjoa&quot;,
+  &quot;package&quot;: &quot;prepay_id=90dskvaiejfjoieg3r&quot;,
+  &quot;signType&quot;: &quot;MD5&quot;,
+  &quot;paySign&quot;: &quot;fq3jefj9afrjao3jfr98ear&quot;
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<p>参数说明见<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115">微信公众平台</a>
+支付流程见<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4">微信支付开发文档</a></p>
+<h3 id="1_5">1.5修改点播单</h3>
+<h3>request</h3>
+<p><code>PUT /wxs/tickets/{ticket_id}</code></p>
+<pre><code>{
+  &quot;movieOrderList&quot;: [&quot;fjodifjp98a3j4pf&quot;, &quot;jfp3q4j8fjp9dea8&quot;, &quot;fjq39pjf8ef2dfdpoh&quot;],
+  &quot;progressPhase&quot;: &quot;COMPLETED&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>movieOrderList</td>
+	<td>list</td>
+	<td>影片播放顺序</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>progressPhase</td>
+	<td>string</td>
+	<td>点播单进度</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_6">1.6向点播单报告问题</h3>
+<h3>request</h3>
+<p><code>POST /wxs/tickets/{ticket_id}/complaint</code></p>
+<pre><code>{
+  &quot;content&quot;: &quot;影片没有播放完就终止了&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>content</td>
+	<td>string</td>
+	<td>投诉内容</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h2 id="2">2.微信用户管理</h2>
+<h3 id="2_1">2.1查询用户</h3>
+<h3>request</h3>
+<p><code>GET /wxs/wx_users?open_id={open_id}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>open_id</td>
+	<td>string</td>
+	<td>用户id</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>start</td>
+	<td>int</td>
+	<td>分页开始，默认为0</td>
+	<td>否</td>
+</tr>
+<tr>
+	<td>limit</td>
+	<td>int</td>
+	<td>页面大小，默认为20</td>
+	<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3>reponse</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;totalCount&quot;: 30,
+  &quot;itemList&quot;: [
+    {
+        &quot;openID&quot;: &quot;fq23jfjp9a8e9q34&quot;,
+        &quot;nickName&quot;: &quot;张三&quot;,
+        &quot;iconURL&quot;: &quot;https://weixin.com.cn/ajfw90fa9.jpg&quot;,
+        &quot;attentionTime&quot;: 1510995105068,
+        &quot;sceneID&quot;: 2000
+    },{
+      ...
+    }
+  ]
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>用户id</td>
+</tr>
+<tr>
+	<td>nickName</td>
+	<td>string</td>
+	<td>用户昵称</td>
+</tr>
+<tr>
+	<td>iconURL</td>
+	<td>string</td>
+	<td>用户头像</td>
+</tr>
+<tr>
+	<td>attentionTime</td>
+	<td>string</td>
+	<td>用户关注本公众号的时间</td>
+</tr>
+<tr>
+	<td>sceneID</td>
+	<td>int</td>
+	<td>用户最新扫面的二维码场景值</td>
+</tr>
+</tbody>
+</table>
 
 </body>
 </html>
