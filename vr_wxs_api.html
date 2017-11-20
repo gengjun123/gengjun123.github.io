@@ -303,12 +303,12 @@ img {
 <li>
 <a href="#1">点播单管理</a>
 <ul>
-<li><a href="#1_1">1.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</a></li>
-<li><a href="#1_2">1.2从点播单中删除影片</a></li>
-<li><a href="#1_3">1.3查询点播单</a>  
+<li><a href="#1_1">1.1向购物车中添加影片</a></li>
+<li><a href="#1_2">1.2修改购物车</a></li>
+<li><a href="#1_3">1.3提交购物车</a></li>
+<li><a href="#1_4">1.4查询点播单</a>  
 </li>
-<li><a href="#1_4">1.4获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</a></li>
-<li><a href="#1_5">1.5修改点播单</a></li>
+<li><a href="#1_5">1.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</a></li>
 <li><a href="#1_6">1.6向点播单报告问题</a></li>
 </ul>
 </li>
@@ -320,9 +320,9 @@ img {
 </li>
 </ol>
 <h2 id="1">1.点播单管理</h2>
-<h3 id="1_1">1.1向点播单中添加影片(前端并无创建点播单操作，服务器会自动创建点播单)</h3>
+<h3 id="1_1">1.1向购物车中添加影片</h3>
 <h3>request</h3>
-<p><code>POST /wxs/tickets/movies</code></p>
+<p><code>POST /wxs/cart</code></p>
 <pre><code>{
   &quot;movieID&quot;: &quot;fqofnaieujfoiq3jfoaew&quot;,
   &quot;openID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;
@@ -355,31 +355,22 @@ img {
 </table>
 <h3>response</h3>
 <p>成功 200</p>
-<pre><code>{
-  &quot;ticketID&quot;: &quot;q03jfp9q38jfp9q38fp9ew&quot;
-}
-</code></pre>
-
 <p>失败 400/500</p>
 <pre><code>{
   &quot;info&quot;: &quot;失败描述&quot;
 }
 </code></pre>
 
-<h3 id="1_2">1.2从点播单中删除影片</h3>
+<h3 id="1_2">1.2修改购物车</h3>
 <h3>request</h3>
-<p><code>DELETE /wxs/tickets/{ticket_id}/movies/{movie_id}</code></p>
-<h3>response</h3>
-<p>成功 200</p>
-<p>失败 400/500</p>
+<p><code>PUT /wxs/cart</code></p>
 <pre><code>{
-  &quot;info&quot;: &quot;失败描述&quot;
+  &quot;movieID&quot;: &quot;fqofnaieujfoiq3jfoaew&quot;,
+  &quot;openID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;,
+  &quot;action&quot;: &quot;MOVEUP&quot;
 }
 </code></pre>
 
-<h3 id="1_3">1.3查询点播单</h3>
-<h3>request</h3>
-<p><code>GET /wxs/tickets?open_id={open_id}&amp;status={status}</code></p>
 <table>
 <thead>
 <tr>
@@ -391,7 +382,87 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>open_id</td>
+	<td>movieID</td>
+	<td>string</td>
+	<td>目标影片id</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>微信给用户对本公众号分配的唯一标识，获取方法<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842">参考</a></td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>action</td>
+	<td>string</td>
+	<td>MOVEUP, MOVEDOWN, REMOVE 分别对应上移, 下移和删除影片</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_3">1.3提交购物车</h3>
+<h3>request</h3>
+<p><code>POST /wxs/cart/submit</code></p>
+<pre><code>{
+  &quot;openID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>微信给用户对本公众号分配的唯一标识，获取方法<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842">参考</a></td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;ticketID&quot;: &quot;fweiqb3285nxqojoew&quot;
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
+<h3 id="1_4">1.4查询点播单</h3>
+<h3>request</h3>
+<p><code>GET /wxs/tickets?open_id={openID}&amp;status={status}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>openID</td>
 	<td>string</td>
 	<td>微信用户openid</td>
 	<td>是</td>
@@ -544,9 +615,33 @@ img {
 </table>
 <p><code>点播单状态(status)枚举：PENDING_PAYMENT(待付款) / ALREADY_PAID(已付款) / OVER_TIME(超出观看时间)</code></p>
 <p><code>点播单进度(progressPhase)枚举:TO_DISTRIBUTE(待派发) / DISTRIBUTED(已派发) / PLAYING(已执行，播放中) / COMPLETED(播放完成) / TO_TERMINATE(待终止，即观众中途离开，并未点击观看完成) / TERMINATED(已终止，即管理员强行将播放终止)</code></p>
-<h3 id="1_4">1.4获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</h3>
+<h3 id="1_5">1.5获取支付参数(微信客户端支付时，需要向服务器获取加密参数)</h3>
 <h3>request</h3>
-<p><code>GET /wxs/tickets/{ticket_id}/weixin_payment/params</code></p>
+<p><code>GET /wxs/payment/wx/params?open_id={openID}&amp;ticket_id={ticketID}</code></p>
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>微信用户openid</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>ticketID</td>
+	<td>string</td>
+	<td>提交支付的点播单ID</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
 <h3>response</h3>
 <p>成功 200</p>
 <pre><code>{
@@ -566,51 +661,12 @@ img {
 
 <p>参数说明见<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115">微信公众平台</a>
 支付流程见<a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_4">微信支付开发文档</a></p>
-<h3 id="1_5">1.5修改点播单</h3>
-<h3>request</h3>
-<p><code>PUT /wxs/tickets/{ticket_id}</code></p>
-<pre><code>{
-  &quot;movieOrderList&quot;: [&quot;fjodifjp98a3j4pf&quot;, &quot;jfp3q4j8fjp9dea8&quot;, &quot;fjq39pjf8ef2dfdpoh&quot;],
-  &quot;progressPhase&quot;: &quot;COMPLETED&quot;
-}
-</code></pre>
-
-<table>
-<thead>
-<tr>
-	<th>名称</th>
-	<th>类型</th>
-	<th>描述</th>
-	<th>是否必须</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-	<td>movieOrderList</td>
-	<td>list</td>
-	<td>影片播放顺序</td>
-	<td>否</td>
-</tr>
-<tr>
-	<td>progressPhase</td>
-	<td>string</td>
-	<td>点播单进度</td>
-	<td>否</td>
-</tr>
-</tbody>
-</table>
-<h3>response</h3>
-<p>成功 200</p>
-<p>失败 400/500</p>
-<pre><code>{
-  &quot;info&quot;: &quot;失败描述&quot;
-}
-</code></pre>
-
 <h3 id="1_6">1.6向点播单报告问题</h3>
 <h3>request</h3>
-<p><code>POST /wxs/tickets/{ticket_id}/complaint</code></p>
+<p><code>POST /wxs/tickets/complaint</code></p>
 <pre><code>{
+  &quot;ticketID&quot;: &quot;fweiqb3285nxqojoew&quot;,
+  &quot;openID&quot;: &quot;qjo3fjaefjap3jq83f9p8er9fpq4&quot;,
   &quot;content&quot;: &quot;影片没有播放完就终止了&quot;
 }
 </code></pre>
@@ -625,6 +681,18 @@ img {
 </tr>
 </thead>
 <tbody>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>微信用户openid</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>ticketID</td>
+	<td>string</td>
+	<td>投诉目标</td>
+	<td>是</td>
+</tr>
 <tr>
 	<td>content</td>
 	<td>string</td>
@@ -644,7 +712,7 @@ img {
 <h2 id="2">2.微信用户管理</h2>
 <h3 id="2_1">2.1查询用户</h3>
 <h3>request</h3>
-<p><code>GET /wxs/wx_users?open_id={open_id}</code></p>
+<p><code>GET /wxs/users/wx?open_id={openID}</code></p>
 <table>
 <thead>
 <tr>
@@ -656,7 +724,7 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>open_id</td>
+	<td>openID</td>
 	<td>string</td>
 	<td>用户id</td>
 	<td>否</td>
