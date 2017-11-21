@@ -326,6 +326,7 @@ img {
 <li><a href="#3_3">3.3修改终端</a></li>
 <li><a href="#3_4">3.4删除终端</a></li>
 <li><a href="#3_5">3.5生成终端二维码</a></li>
+<li><a href="#3_6">3.6扫描座椅</a></li>
 </ul>
 </li>
 <li>
@@ -991,6 +992,53 @@ img {
 }
 </code></pre>
 
+<h3 id="3_6">3.6扫描座椅</h3>
+<h3>request</h3>
+<p><code>POST /cms/vr_clients/_scan</code></p>
+<pre><code>{
+  &quot;sceneID&quot;: 123,
+  &quot;openID&quot;: &quot;fqjofj9ep8rj9fq8jfp98&quot;
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+	<th>名称</th>
+	<th>类型</th>
+	<th>描述</th>
+	<th>是否必须</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>sceneID</td>
+	<td>string</td>
+	<td>扫描二维码的场景值</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>openID</td>
+	<td>string</td>
+	<td>微信用户id</td>
+	<td>是</td>
+</tr>
+</tbody>
+</table>
+<h3>response</h3>
+<p>成功 200</p>
+<pre><code>{
+  &quot;statusBeforeScan&quot;: &quot;IN_VOD&quot;,             //扫描之前座椅的状态
+  &quot;scannerID&quot;: &quot;fqjfp9aw8ef9q38jf9pjfe98ajfq34&quot;         //最近一次扫描该座椅的用户id
+}
+</code></pre>
+
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
+}
+</code></pre>
+
 <h2 id="4">4.影片管理</h2>
 <h3 id="4_1">4.1创建影片</h3>
 <h3>request</h3>
@@ -1377,11 +1425,8 @@ img {
 <h3>request</h3>
 <p><code>POST /cms/vod_tasks</code></p>
 <pre><code>{
-  &quot;movieList&quot;: [{
-    &quot;id&quot;: &quot;q2pf8je98h3qp9h9q8h&quot;
-  },{
-    &quot;id&quot;: &quot;fajwpoiefieauhgrh8g&quot;
-  }]
+  &quot;sceneID&quot;: 1234,
+  &quot;movieIDList&quot;: [&quot;q2pf8je98h3qp9h9q8h&quot;, &quot;fajwpoiefieauhgrh8g&quot;]
 }
 </code></pre>
 
@@ -1396,9 +1441,15 @@ img {
 </thead>
 <tbody>
 <tr>
-	<td>movieList[].id</td>
+	<td>sceneID</td>
 	<td>string</td>
-	<td>影片id</td>
+	<td>用户扫描的二维码的场景值</td>
+	<td>是</td>
+</tr>
+<tr>
+	<td>movieIDList</td>
+	<td>list</td>
+	<td>影片id列表</td>
 	<td>是</td>
 </tr>
 </tbody>
@@ -1443,6 +1494,13 @@ img {
   &quot;messageID&quot;: &quot;iejgq9834g9q83hg9898thp9&quot;,  //消息id  
   &quot;type&quot;: &quot;{TYPE}&quot;,                         //消息类型            
   &quot;message&quot;: {MESSAGE_OBJECT}               //消息体
+}
+</code></pre>
+
+<p>无内容 204</p>
+<p>失败 400/500</p>
+<pre><code>{
+  &quot;info&quot;: &quot;失败描述&quot;
 }
 </code></pre>
 
