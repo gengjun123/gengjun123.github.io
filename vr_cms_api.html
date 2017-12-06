@@ -348,7 +348,7 @@ img {
 </ul>
 </li>
 <li>
-<a href="#6">双端通信websocket(用于coms与cms通信)</a>
+<a href="#6">双端通信长轮训(用于coms与cms通信)</a>
 <ul>
 <li><a href="#6_1">6.1有新影片生成</a></li>
 <li><a href="#6_2">6.2有新点播任务生成</a></li>
@@ -1491,9 +1491,17 @@ img {
 <h3>response</h3>
 <p>成功 200</p>
 <pre><code>{
-  &quot;messageID&quot;: &quot;iejgq9834g9q83hg9898thp9&quot;,  //消息id  
-  &quot;type&quot;: &quot;{TYPE}&quot;,                         //消息类型            
-  &quot;message&quot;: {MESSAGE_OBJECT}               //消息体
+  &quot;messageList&quot;: [
+    {
+      &quot;messageID&quot;: &quot;iejgq9834g9q83hg9898thp9&quot;,  //消息id  
+      &quot;type&quot;: &quot;{TYPE}&quot;,                         //消息类型            
+      &quot;message&quot;: {MESSAGE_OBJECT}               //消息体
+    }, {
+      &quot;messageID&quot;: &quot;iejgq9834g9q83hg9898thp9&quot;,  //消息id  
+      &quot;type&quot;: &quot;{TYPE}&quot;,                         //消息类型            
+      &quot;message&quot;: {MESSAGE_OBJECT}               //消息体
+    } 
+  ]
 }
 </code></pre>
 
